@@ -8,3 +8,5 @@ class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'account/signup.html'
     success_url = '/'
+
+signup = RegisterView.as_view()

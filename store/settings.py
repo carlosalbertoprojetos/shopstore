@@ -49,13 +49,15 @@ INSTALLED_APPS = [
 
     # apps de terceiros
     'crispy_forms',
+    'crispy_bootstrap4',
 
     # # login com google/Facebook
     'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.facebook',
 
     # meus apps
-    'usuario',
+    'user',
+    'financial',
 
 ]
 
@@ -183,7 +185,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
 
-AUTH_USER_MODEL = 'usuario.User'
+AUTH_USER_MODEL = 'user.User'
 
 
 LOGIN_URL = '/login/'
