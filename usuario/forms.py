@@ -6,13 +6,19 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 User = get_user_model()
 
 class RegisterForm(forms.ModelForm):
-
     password = forms.CharField(widget=forms.PasswordInput)
     password_2 = forms.CharField(label='Confirmar senha', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ['profile', 'email', 'password', 'password_2',]
+        fields = ['username', 'email', 'password', 'password_2',]
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        qs = User.objects.filter(username=username)
+        if qs.exists():
+            raise forms.ValidationError("Este usuário já está sendo utilizado")
+        return username
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -31,13 +37,12 @@ class RegisterForm(forms.ModelForm):
 
 
 class UserAdminCreationForm(forms.ModelForm):
-
     password = forms.CharField(widget=forms.PasswordInput)
     password_2 = forms.CharField(label='Confirmar senha', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = [ 'profile', 'email',]
+        fields = [ 'username', 'email',]
 
     def clean(self):
         cleaned_data = super().clean()
@@ -56,12 +61,11 @@ class UserAdminCreationForm(forms.ModelForm):
 
 
 class UserAdminChangeForm(forms.ModelForm):
-
     password = ReadOnlyPasswordHashField()
 
     class Meta:
         model = User
-        fields = ['profile', 'email', 'password', 'staff', 'active', 'admin',]
+        fields = ['username', 'email', 'password', 'staff', 'active', 'admin',]
 
     def clean_password(self):
         return self.initial["password"]

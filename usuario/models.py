@@ -6,9 +6,9 @@ from django.db import models
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, profile=None, password=None, is_staff=False, is_admin=False, is_active=True):
-        if not profile:
-            raise ValueError('Precisa selecionar um perfil.')
+    def create_user(self, email, username=None, password=None, is_staff=False, is_admin=False, is_active=True):
+        if not username:
+            raise ValueError('Precisa inserir um usuário.')
         if not email:
             raise ValueError('O usuário precisa ter um email válido.')
         if not password:
@@ -16,7 +16,7 @@ class UserManager(BaseUserManager):
 
         user_obj = self.model(
             email=self.normalize_email(email),
-            profile=profile
+            username=username
         )
         user_obj.set_password(password)
         user_obj.staff = is_staff
@@ -25,19 +25,21 @@ class UserManager(BaseUserManager):
         user_obj.save(using=self._db)
         return user_obj
 
-    def create_staffuser(self, email, profile=None, password=None):
+
+    def create_staffuser(self, email, username=None, password=None):
         user = self.create_user(
             email,            
-            profile=profile,
+            username=username,
             password=password,
             is_staff=True
         )
         return user
 
-    def create_superuser(self, email, password=None):
+
+    def create_superuser(self, email, username=None, password=None):
         user = self.create_user(
             email,
-            profile='.',
+            username=username,
             password=password,
             is_staff=True,
             is_admin=True            
@@ -47,13 +49,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
 
-    PROFILE_CHOICES = {
-        ('cliente', 'Cliente'),
-        ('veterinario', 'Veterinário'),
-    }
-
-    profile = models.CharField('Perfil', max_length=11, choices=PROFILE_CHOICES, null=True)
-
+    username = models.CharField('Usuário', max_length=255, unique=True)
     email       = models.EmailField('E-mail', unique=True)
     active      = models.BooleanField('Está ativo?', blank=True, default=True)
     staff       = models.BooleanField('É da equipe?', blank=True, default=False)
@@ -61,13 +57,13 @@ class User(AbstractBaseUser):
     date_joined = models.DateTimeField('Data de Entrada', auto_now_add=True)
     
     
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.username
     
     def has_perm(self, perm, obj=None):
         return True
