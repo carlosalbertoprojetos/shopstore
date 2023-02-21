@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Loja Python{% endblock %}
+
+{% block content %}
+<div class="container">
+<h3>Sistema REGISTER</h3><br><br>
+    <h1>Bem vindo {{ user.email }} !!!</h1><br>
+    <h4>O Register tem como funções: acessar e sair, editar, exibir e excluir usuários, recuperar de senha, por meio de link enviado para o email do usuário, e encaminhar mensagens ao administrado do framework por formulário próprio.</h4><br>
+    <ul>
+        <li>Login</li>
+        <li>Logout</li>
+        <li>Registro</li>
+        <li>Exibição</li>
+        <li>Edição</li>
+        <li>Recuperação de senha</li>
+        <li>Exclusão</li>
+    </ul>
+</div>
+{% endblock %}
