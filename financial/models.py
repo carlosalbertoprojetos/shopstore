@@ -66,7 +66,7 @@ class Release(models.Model):
 
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='accounts')
     date = models.DateField()
-    release = models.CharField(max_length=20, choices=TIPO_CHOICE)
+    option = models.CharField(max_length=20, choices=TIPO_CHOICE)
     description = models.CharField(max_length=100, blank=True)
     value = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     detail = models.CharField(max_length=255, null=True, blank=True)

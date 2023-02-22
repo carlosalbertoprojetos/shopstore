@@ -6,5 +6,5 @@ app_name = 'user'
 
 
 urlpatterns = [
-    path('signup/', v.signup, name='signup'),
+    # path('signup/', v.signup, name='signup'),
 ]

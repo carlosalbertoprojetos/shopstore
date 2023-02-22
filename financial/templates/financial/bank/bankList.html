@@ -3,29 +3,41 @@
 
 {% block content %}
   <h1>
-    Lista
-    <a class="btn btn-primary" href="{% url 'contas:cadastrar_contas' %}">Adicionar</a>
+    Banks
+    <a class="btn btn-primary" href="{% url 'financial:bank_register' %}">Add</a>
   </h1>
   <table class="table">
     <thead>
       <tr>
-        <th>Nome</th>
-        <th>E-mail</th>
-        <th>Ações</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Agency</th>
+        <th>Detail</th>
+        <th>Create in</th>
+        <th>Is Active</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       {% for object in object_list %}
         <tr>
           <td>
-            <a href="{{ object.get_absolute_url }}">{{ object.full_name }}</a>
+            <a href="{{ object.bank_gau_detail }}">{{ object.name }}</a>
           </td>
-          <td>{{ object.email|default:'---' }}</td>
+          <td>{{ object.number}}</td>
+          <td>{{ object.agency}}</td>
+          <td>{{ object.detail}}</td>
+          <td>{{ object.createdin}}</td>
+          {% if object.active %}
+          <td align='center'><i class="fa fa-check"></i></td>
+          {% else %}
+          <td align='center'><i class="fa fa-close"></i></td>
+          {% endif %}
           <td>
-            <a href="{% url 'contas:editar_conta' object.pk %}">
+            <a href="{% url 'financial:bank_update' object.pk %}">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="{% url 'contas:deletar_conta' object.pk %}" style="padding-left: 7px">
+            <a href="{% url 'financial:bank_delete' object.pk %}" style="padding-left: 7px">
               <i class="fa fa-close no"></i>
             </a>
           </td>
@@ -33,5 +45,5 @@
       {% endfor %}
     </tbody>
   </table>
-  {% include "includes/pagination.html" %}
+  {% comment %} {% include "includes/pagination.html" %} {% endcomment %}
 {% endblock content %}

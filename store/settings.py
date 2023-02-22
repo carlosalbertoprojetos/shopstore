@@ -126,9 +126,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'pt-br'
+# LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Sao_Paulo'
+# TIME_ZONE = 'America/Sao_Paulo'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -175,17 +177,17 @@ ACCOUNT_SESSION_REMEMBER = True
 # Faz com que o usuário, ao se cadastrar, receba um email de confirmação
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Não precisa de username
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ACCOUNT_USERNAME_REQUIRED = False
 # Método de autenticação: email
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # Email obrigatório
 ACCOUNT_EMAIL_REQUIRED = True
 # Email único
 ACCOUNT_UNIQUE_EMAIL = True
 
 
-AUTH_USER_MODEL = 'user.User'
+# AUTH_USER_MODEL = 'user.User'
 
 
 LOGIN_URL = '/login/'

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Entrar{% endblock %}
+
+{% block content %}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary " type="submit">Confirm</button>
+    </form>
+    <br>
+
+    <div>  
+
+    {% load socialaccount %}
+    {% providers_media_js %}
+        <a href='{ provider_login_url "facebook" method="oauth2" %}'>
+        <img src="https://img.icons8.com/color/50/000000/facebook.png"/></a>
+
+        <a href="{% provider_login_url 'google' %}" type="button" aria-pressed="true">
+        <img src="https://img.icons8.com/fluent/50/000000/gmail.png"/></a>
+
+    </div>
+    
+
+
+    <div>
+        <a href="{% url 'account_reset_password' %}">Forgot your password?</a>
+    </div>
+
+
+
+{% endblock %}
+
