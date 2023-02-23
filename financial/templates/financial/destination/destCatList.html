@@ -1,0 +1,35 @@
+<!-- person_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+  Destinations Category
+  <a class="btn btn-primary" href="{% url 'financial:destcat_create' %}">Add</a>
+</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Details</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for object in object_list %}
+    <tr>
+      <td>{{ object.name }}</td>
+      <td>{{ object.details}}</td>
+      <td>
+        <a href="{{ object.destcat_gau_edit }} ">
+          <i class="fa fa-edit"></i>
+        </a>
+        <a href="{{ object.destcat_gau_delete }}" style="padding-left: 7px">
+          <i class="fa fa-close no"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% comment %} {% include "includes/pagination.html" %} {% endcomment %}
+{% endblock content %}

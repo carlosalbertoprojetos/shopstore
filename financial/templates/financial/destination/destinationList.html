@@ -1,0 +1,37 @@
+<!-- person_list.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+  Destination
+  <a class="btn btn-primary" href="{% url 'financial:destination_create' %}">Add</a>
+</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Details</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for object in object_list %}
+    <tr>
+      <td>{{ object.name }}</td>
+      <td>{{ object.category}}</td>
+      <td>{{ object.details}}</td>
+      <td>
+        <a href="{{ object.dest_gau_edit }} ">
+          <i class="fa fa-edit"></i>
+        </a>
+        <a href="{{ object.dest_gau_delete }}" style="padding-left: 7px">
+          <i class="fa fa-close no"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% comment %} {% include "includes/pagination.html" %} {% endcomment %}
+{% endblock content %}

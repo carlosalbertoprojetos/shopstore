@@ -29,16 +29,24 @@ urlpatterns = [
     path('release/<int:pk>/delete/', v.release_delete, name='release_delete'),
 
     # Destination Category -----------------------------------------------------
-    path('destination/category/', v.destinationcategory_list, name='destinationcategory_list'),
-    path('destination/category/create/', v.destinationcategory_create, name='destinationcategory_create'),
-    path('destination/category/<int:pk>/update/', v.destinationcategory_update, name='destinationcategory_update'),
-    path('destination/category/<int:pk>/delete/', v.destinationcategory_delete, name='destinationcategory_delete'),
+    path('destination/category/', v.destcat_list, name='destcat_list'),
+    path('destination/category/create/', v.destcat_create, name='destcat_create'),
+    path('destination/category/<int:pk>/update/', v.destcat_update, name='destcat_update'),
+    path('destination/category/<int:pk>/delete/', v.destcat_delete, name='destcat_delete'),
 
     # Destination ---------------------------------------------------------------
     path('destination/', v.destination_list, name='destination_list'),
     path('destination/create/', v.destination_create, name='destination_create'),
     path('destination/<int:pk>/update/', v.destination_update, name='destination_update'),
     path('destination/<int:pk>/delete/', v.destination_delete, name='destination_delete'),
+
+
+    # FormPayment ---------------------------------------------------------------
+    path('formpayment/', v.payment_list, name='payment_list'),
+    path('formpayment/create/', v.payment_create, name='payment_create'),
+    path('formpayment/<int:pk>/update/', v.payment_update, name='payment_update'),
+    path('formpayment/<int:pk>/delete/', v.payment_delete, name='payment_delete'),
+
 
     # Payment -------------------------------------------------------------------
     path('payment/', v.payment_list, name='payment_list'),

@@ -16,9 +16,9 @@ register_list = RegisterList.as_view()
 
 class RegisterCreate(CreateView):
     model = Register
-    template_name = "register/others/registerCreateUpdate.html"
+    template_name = "register/registerCreateUpdate.html"
     fields = '__all__'
-    success_url = _('produtc:register_list')
+    success_url = _('register:register_list')
 
 register_create = RegisterCreate.as_view()
 
@@ -32,16 +32,16 @@ register_details = RegisterDetails.as_view()
 
 class RegisterUpdate(UpdateView):
     model = Register
-    template_name = "register/others/registerCreateUpdate.html"
+    template_name = "register/registerCreateUpdate.html"
     fields = '__all__'
-    success_url = _('produtc:register_list')
+    success_url = _('register:register_list')
 
 register_update = RegisterUpdate.as_view()
 
 
 class RegisterDelete(DeleteView):
     model = Register
-    template_name = "register/others/registerDelete.html"
-    success_url = _('produtc:register_list')
+    template_name = "register/registerDelete.html"
+    success_url = _('register:register_list')
 
 register_delete = RegisterDelete.as_view()

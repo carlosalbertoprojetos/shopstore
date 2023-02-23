@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
-from .models import Bank, Account, DestinationCategory, Destination, Release, Payment
+from .models import Bank, Account, DestinationCategory, Destination, Release, Payment, FormPayment
 
 
 
@@ -137,35 +137,35 @@ release_delete = ReleaseDelete.as_view()
 # Destination Category --------------------------------------------------------
 class DestinationCategoryList(ListView):
     model = DestinationCategory
-    template_name = 'financial/destination/destinationCategoryList.html'
+    template_name = 'financial/destination/destCatList.html'
 
-destinationcategory_list = DestinationCategoryList.as_view()
+destcat_list = DestinationCategoryList.as_view()
 
 
 class DestinationCategoryCreate(CreateView):
     model = DestinationCategory
-    template_name = "financial/destination/destinationCategoryCreateUpdate.html"
+    template_name = "financial/destination/destCatCreateUpdate.html"
     fields = '__all__'
-    success_url = _('financial:destinationcategory_list')
+    success_url = _('financial:destcat_list')
 
-destinationcategory_create = DestinationCategoryCreate.as_view()
+destcat_create = DestinationCategoryCreate.as_view()
 
 
 class DestinationCategoryUpdate(UpdateView):
     model = DestinationCategory
-    template_name = "financial/destination/destinationCategoryCreateUpdate.html"
+    template_name = "financial/destination/destCatCreateUpdate.html"
     fields = '__all__'
-    success_url = _('financial:destinationcategory_list')
+    success_url = _('financial:destcat_list')
 
-destinationcategory_update = DestinationCategoryUpdate.as_view()
+destcat_update = DestinationCategoryUpdate.as_view()
 
 
 class DestinationCategoryDelete(DeleteView):
     model = DestinationCategory
-    template_name = "financial/destination/destinationCategoryDelete.html"
-    success_url = _('financial:destinationcategory_list')
+    template_name = "financial/destination/destCatDelete.html"
+    success_url = _('financial:destcat_list')
 
-destinationcategory_delete = DestinationCategoryDelete.as_view()
+destcat_delete = DestinationCategoryDelete.as_view()
 
 
 # Destination -----------------------------------------------------------------
@@ -201,6 +201,39 @@ class DestinationDelete(DeleteView):
 
 destination_delete = DestinationDelete.as_view()
 
+
+# FormPayment -------------------------------------------------------------
+class FormPaymentList(ListView):
+    model = FormPayment
+    template_name = 'financial/payment/formPayList.html'
+
+payment_list = FormPaymentList.as_view()
+
+
+class FormPaymentCreate(CreateView):
+    model = FormPayment
+    template_name = "financial/payment/formPayCreateUpdate.html"
+    fields = '__all__'
+    success_url = _('financial:formpay_list')
+
+payment_create = FormPaymentCreate.as_view()
+
+
+class FormPaymentUpdate(UpdateView):
+    model = FormPayment
+    template_name = "financial/payment/formPayCreateUpdate.html"
+    fields = '__all__'
+    success_url = _('financial:formpay_list')
+
+payment_update = FormPaymentUpdate.as_view()
+
+
+class FormPaymentDelete(DeleteView):
+    model = FormPayment
+    template_name = "financial/payment/formPayDelete.html"
+    success_url = _('financial:formpay_list')
+
+payment_delete = FormPaymentDelete.as_view()
 
 
 # Payment -----------------------------------------------------------------

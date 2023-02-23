@@ -64,12 +64,22 @@ class DestinationCategory(models.Model):
     name = models.CharField(max_length=50)
     details = models.CharField(max_length=255, null=True, blank=True)
 
+    def destcat_gau_edit(self):
+        return _('financial:destcat_update', args=[self.pk])
+
+    def destcat_gau_delete(self):
+        return _('financial:destcat_delete', args=[self.pk])
 
 class Destination(models.Model):
     name = models.CharField( max_length=50)
     category = models.ForeignKey(DestinationCategory, on_delete=models.CASCADE)
     details = models.CharField(max_length=255, null=True, blank=True)
 
+    def dest_gau_edit(self):
+        return _('financial:destination_update', args=[self.pk])
+
+    def dest_gau_delete(self):
+        return _('financial:destination_delete', args=[self.pk])
 
 class Release(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order')
@@ -95,6 +105,25 @@ class Release(models.Model):
         ordering = ['-createdin']
 
 
+class FormPayment(models.Model):
+    name = models.CharField(max_length=50)
+
+
+    class Meta:
+        verbose_name = 'Form Payment'
+        verbose_name_plural = 'Forms Payments'
+
+
+    def __str__(self):
+        return self.name
+
+    def formpayment_gau_edit(self):
+        return _('financial:Payment_update', args=[self.pk])
+
+    def formpayment_gau_delete(self):
+        return _('financial:payment_delete', args=[self.pk])
+
+
 class Payment(models.Model):
     release = models.ForeignKey(Release, on_delete=models.CASCADE, related_name='release')
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='account')
@@ -102,8 +131,8 @@ class Payment(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
     description = models.CharField(max_length=255, null=True, blank=True)
     value = models.DecimalField(max_digits=11, decimal_places=2)
-    detail = models.CharField(max_length=255, null=True, blank=True)
-    formpayment = models.CharField(max_length=255, null=True, blank=True)
+    details = models.CharField(max_length=255, null=True, blank=True)
+    formpayment = models.ForeignKey(FormPayment, on_delete=models.CASCADE, max_length=255)
     updated = models.DateTimeField(auto_now=True)
     createdin = models.DateTimeField(auto_now_add=True)
 

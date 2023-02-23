@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.facebook',
 
     # meus apps
-    'user',
     'financial',
     'order',
     'product',
