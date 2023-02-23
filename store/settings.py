@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # apps de terceiros
     'crispy_forms',
     'crispy_bootstrap4',
+    'localflavor',
 
     # # login com google/Facebook
     'allauth.socialaccount.providers.google',
@@ -58,6 +59,9 @@ INSTALLED_APPS = [
     # meus apps
     'user',
     'financial',
+    'order',
+    'product',
+    'register'
 
 ]
 

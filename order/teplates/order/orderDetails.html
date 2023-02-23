@@ -1,0 +1,15 @@
+<!-- person_detail.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Details</h1>
+
+  <ul>
+    <li><b>Name:</b> {{ object.name }}</li>
+    <li><b>E-mail:</b> {{ object.number}}</li>
+    <li><b>Agency:</b> {{ object.agency }}</li>
+    <li><b>Detail:</b> {{ object.detail }}</li>
+    <li><b>Created in:</b> {{ object.createdin }}</li>
+    <li><b>Active:</b> {{ object.active }}</li>
+  </ul>
+{% endblock content %}

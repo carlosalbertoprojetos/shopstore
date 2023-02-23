@@ -9,39 +9,43 @@ app_name = "financial"
 urlpatterns = [
     # Bank --------------------------------------------------------------------
     path('banks/', v.bank_list, name='bank_list'),
-    path('bank/register/', v.bank_register, name='bank_register'),
+    path('bank/create/', v.bank_create, name='bank_create'),
     path('bank/<int:pk>/details/', v.bank_details, name='bank_details'),
     path('bank/<int:pk>/update/', v.bank_update, name='bank_update'),
     path('bank/<int:pk>/delete/', v.bank_delete, name='bank_delete'),
 
-
-    # Account -----------------------------------------------------------------
+    # Account ------------------------------------------------------------------
     path('account/', v.account_list, name='account_list'),
-    path('account/register/', v.account_register, name='account_register'),
+    path('account/create/', v.account_create, name='account_create'),
     path('account/<int:pk>/details/', v.account_details, name='account_details'),
     path('account/<int:pk>/update/', v.account_update, name='account_update'),
     path('account/<int:pk>/delete/', v.account_delete, name='account_delete'),
 
+    # Release ------------------------------------------------------------------
+    path('release/', v.release_list, name='release_list'),
+    path('release/create/', v.release_create, name='release_create'),
+    path('release/<int:pk>/details/', v.release_details, name='release_details'),
+    path('release/<int:pk>/update/', v.release_update, name='release_update'),
+    path('release/<int:pk>/delete/', v.release_delete, name='release_delete'),
 
-    # Release------------------------------------------------------------------
-    # path('releases/', v.Lista_LancamentosView.as_view(), name='releases'),
+    # Destination Category -----------------------------------------------------
+    path('destination/category/', v.destinationcategory_list, name='destinationcategory_list'),
+    path('destination/category/create/', v.destinationcategory_create, name='destinationcategory_create'),
+    path('destination/category/<int:pk>/update/', v.destinationcategory_update, name='destinationcategory_update'),
+    path('destination/category/<int:pk>/delete/', v.destinationcategory_delete, name='destinationcategory_delete'),
 
+    # Destination ---------------------------------------------------------------
+    path('destination/', v.destination_list, name='destination_list'),
+    path('destination/create/', v.destination_create, name='destination_create'),
+    path('destination/<int:pk>/update/', v.destination_update, name='destination_update'),
+    path('destination/<int:pk>/delete/', v.destination_delete, name='destination_delete'),
 
-    # Expense Category ------------------------------------------------------
-    path('expensive/category/', v.expensecategory_list, name='expensecategory_list'),
-    path('expensive/category/register/', v.expensecategory_register, name='expensecategory_register'),
-    # path('expensive/category/<int:pk>/details/', v.expensecategory_details, name='expensecategory_details'),
-    path('expensive/category/<int:pk>/update/', v.expensecategory_update, name='expensecategory_update'),
-    path('expensive/category/<int:pk>/delete/', v.expensecategory_delete, name='expensecategory_delete'),
-
-
-    # Expense ---------------------------------------------------------------
-    path('expensive/', v.expense_list, name='expense_list'),
-    path('expensive/register/', v.expense_register, name='expensive_register'),
-    # path('expensive/<int:pk>/details/', v.expensive_details, name='expensive_details'),
-    path('expensive/<int:pk>/update/', v.expense_update, name='expensive_update'),
-    path('expensive/<int:pk>/delete/', v.expense_delete, name='expensive_delete'),
-
+    # Payment -------------------------------------------------------------------
+    path('payment/', v.payment_list, name='payment_list'),
+    path('payment/create/', v.payment_create, name='payment_create'),
+    path('payment/<int:pk>/details/', v.payment_details, name='payment_details'),
+    path('payment/<int:pk>/update/', v.Payment_update, name='Payment_update'),
+    path('payment/<int:pk>/delete/', v.payment_delete, name='payment_delete'),
 ]
 
 

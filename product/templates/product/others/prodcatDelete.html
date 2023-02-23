@@ -1,0 +1,18 @@
+<!-- person_delete.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Delete</h1>
+<div class="cols-6">
+  <form action="." method="POST">
+    <div class="col-sm-6">
+      {% csrf_token %}
+      <p>Delete {{ object }}?</p>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Confirm</button>
+        <a class="btn btn-danger" href="{% url 'product:prodcat_list' %}">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock content %}

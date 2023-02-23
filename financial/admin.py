@@ -1,29 +1,29 @@
 from django.contrib import admin
 
-from .models import Bank, Account, Release, ExpenseCategory, Expense
+# from .models import Bank, Account, Release, DestinationCategory, Destination
 
 
 
-@admin.register(Bank)
-class BankAdmin(admin.ModelAdmin):
-    ...
+# @admin.register(Bank)
+# class BankAdmin(admin.ModelAdmin):
+#     ...
 
 
-@admin.register(Account)
-class AccountAdmin(admin.ModelAdmin):
-    ...
+# @admin.register(Account)
+# class AccountAdmin(admin.ModelAdmin):
+#     ...
 
 
-@admin.register(Release)
-class ReleaseAdmin(admin.ModelAdmin):
-    ...
+# @admin.register(Release)
+# class ReleaseAdmin(admin.ModelAdmin):
+#     ...
 
 
-@admin.register(ExpenseCategory)
-class ExpenseCategoryAdmin(admin.ModelAdmin):
-    ...
+# @admin.register(DestinationCategory)
+# class DestinationCategoryAdmin(admin.ModelAdmin):
+#     ...
 
 
-@admin.register(Expense)
-class ExpenseAdmin(admin.ModelAdmin):
-    ...
+# @admin.register(Destination)
+# class DestinationAdmin(admin.ModelAdmin):
+#     ...

@@ -7,7 +7,7 @@
     <form action="." method="POST">
       <div class="col-sm-6">
         {% csrf_token %}
-        <p>Delete {{ object }} ?</p>
+        <p>Delete {{ object }}?</p>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Confirm</button>
           <a class="btn btn-danger" href="{% url 'financial:account_list' %}">Cancel</a>

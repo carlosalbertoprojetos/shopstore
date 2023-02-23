@@ -6,7 +6,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
-from .models import Bank, Account, Release, ExpenseCategory, Expense
+from .models import Bank, Account, DestinationCategory, Destination, Release, Payment
 
 
 
@@ -18,13 +18,13 @@ class BankList(ListView):
 bank_list = BankList.as_view()
 
 
-class BankRegister(CreateView):
+class BankCreate(CreateView):
     model = Bank
-    template_name = "financial/bank/bankRegisterUpdate.html"
+    template_name = "financial/bank/bankCreateUpdate.html"
     fields = '__all__'
     success_url = _('financial:bank_list')
 
-bank_register = BankRegister.as_view()
+bank_create = BankCreate.as_view()
 
 
 class BankDetails(DetailView):
@@ -36,7 +36,7 @@ bank_details = BankDetails.as_view()
 
 class BankUpdate(UpdateView):
     model = Bank
-    template_name = "financial/bank/bankRegisterUpdate.html"
+    template_name = "financial/bank/bankCreateUpdate.html"
     fields = '__all__'
     success_url = _('financial:bank_list')
 
@@ -60,13 +60,13 @@ class AccountList(ListView):
 account_list = AccountList.as_view()
 
 
-class AccountRegister(CreateView):
+class AccountCreate(CreateView):
     model = Account
-    template_name = "financial/account/accountRegisterUpdate.html"
+    template_name = "financial/account/accountCreateUpdate.html"
     fields = '__all__'
     success_url = _('financial:account_list')
 
-account_register = AccountRegister.as_view()
+account_create = AccountCreate.as_view()
 
 
 class AccountDetails(DetailView):
@@ -78,7 +78,7 @@ account_details = AccountDetails.as_view()
 
 class AccountUpdate(UpdateView):
     model = Account
-    template_name = "financial/account/accountRegisterUpdate.html"
+    template_name = "financial/account/accountCreateUpdate.html"
     fields = '__all__'
     success_url = _('financial:account_list')
 
@@ -101,13 +101,13 @@ class ReleaseList(ListView):
 release_list = ReleaseList.as_view()
 
 
-class ReleaseRegister(CreateView):
+class ReleaseCreate(CreateView):
     model = Release
-    template_name = "financial/release/releaseRegisterUpdate.html"
+    template_name = "financial/release/releaseCreateUpdate.html"
     fields = '__all__'
     success_url = _('financial:release_list')
 
-release_register = ReleaseRegister.as_view()
+release_create = ReleaseCreate.as_view()
 
 
 class ReleaseDetails(DetailView):
@@ -119,7 +119,7 @@ release_details = ReleaseDetails.as_view()
 
 class ReleaseUpdate(UpdateView):
     model = Release
-    template_name = "financial/release/releaseRegisterUpdate.html"
+    template_name = "financial/release/releaseCreateUpdate.html"
     fields = '__all__'
     success_url = _('financial:release_list')
 
@@ -134,69 +134,111 @@ class ReleaseDelete(DeleteView):
 release_delete = ReleaseDelete.as_view()
 
 
-# Expense Category --------------------------------------------------------
-class ExpenseCategoryList(ListView):
-    model = ExpenseCategory
-    template_name = 'financial/expense/expensecategoryList.html'
+# Destination Category --------------------------------------------------------
+class DestinationCategoryList(ListView):
+    model = DestinationCategory
+    template_name = 'financial/destination/destinationCategoryList.html'
 
-expensecategory_list = ExpenseCategoryList.as_view()
+destinationcategory_list = DestinationCategoryList.as_view()
 
 
-class ExpenseCategoryRegister(CreateView):
-    model = ExpenseCategory
-    template_name = "financial/expense/expensecategoryRegisterUpdate.html"
+class DestinationCategoryCreate(CreateView):
+    model = DestinationCategory
+    template_name = "financial/destination/destinationCategoryCreateUpdate.html"
     fields = '__all__'
-    success_url = _('financial:expensecategory_list')
+    success_url = _('financial:destinationcategory_list')
 
-expensecategory_register = ExpenseCategoryRegister.as_view()
+destinationcategory_create = DestinationCategoryCreate.as_view()
 
 
-class ExpenseCategoryUpdate(UpdateView):
-    model = ExpenseCategory
-    template_name = "financial/expense/expensecategoryRegisterUpdate.html"
+class DestinationCategoryUpdate(UpdateView):
+    model = DestinationCategory
+    template_name = "financial/destination/destinationCategoryCreateUpdate.html"
     fields = '__all__'
-    success_url = _('financial:expensecategory_list')
+    success_url = _('financial:destinationcategory_list')
 
-expensecategory_update = ExpenseCategoryUpdate.as_view()
-
-
-class ExpenseCategoryDelete(DeleteView):
-    model = ExpenseCategory
-    template_name = "financial/expense/expensecategoryDelete.html"
-    success_url = _('financial:expensecategory_list')
-
-expensecategory_delete = ExpenseCategoryDelete.as_view()
+destinationcategory_update = DestinationCategoryUpdate.as_view()
 
 
-# Expense -----------------------------------------------------------------
-class ExpenseList(ListView):
-    model = Expense
-    template_name = 'financial/expense/expenseList.html'
+class DestinationCategoryDelete(DeleteView):
+    model = DestinationCategory
+    template_name = "financial/destination/destinationCategoryDelete.html"
+    success_url = _('financial:destinationcategory_list')
 
-expense_list = ExpenseList.as_view()
+destinationcategory_delete = DestinationCategoryDelete.as_view()
 
 
-class ExpenseRegister(CreateView):
-    model = Expense
-    template_name = "financial/expense/expenseRegisterUpdate.html"
+# Destination -----------------------------------------------------------------
+class DestinationList(ListView):
+    model = Destination
+    template_name = 'financial/destination/destinationList.html'
+
+destination_list = DestinationList.as_view()
+
+
+class DestinationCreate(CreateView):
+    model = Destination
+    template_name = "financial/destination/destinationCreateUpdate.html"
     fields = '__all__'
-    success_url = _('financial:expense_list')
+    success_url = _('financial:destination_list')
 
-expense_register = ExpenseRegister.as_view()
+destination_create = DestinationCreate.as_view()
 
 
-class ExpenseUpdate(UpdateView):
-    model = Expense
-    template_name = "financial/expense/expenseRegisterUpdate.html"
+class DestinationUpdate(UpdateView):
+    model = Destination
+    template_name = "financial/destination/destinationCreateUpdate.html"
     fields = '__all__'
-    success_url = _('financial:expense_list')
+    success_url = _('financial:destination_list')
 
-expense_update = ExpenseUpdate.as_view()
+destination_update = DestinationUpdate.as_view()
 
 
-class ExpenseDelete(DeleteView):
-    model = Expense
-    template_name = "financial/expense/expenseDelete.html"
-    success_url = _('financial:expense_list')
+class DestinationDelete(DeleteView):
+    model = Destination
+    template_name = "financial/destination/destinationDelete.html"
+    success_url = _('financial:destination_list')
 
-expense_delete = ExpenseDelete.as_view()
+destination_delete = DestinationDelete.as_view()
+
+
+
+# Payment -----------------------------------------------------------------
+class PaymentList(ListView):
+    model = Payment
+    template_name = "financial/payment/paymentList.html"
+
+payment_list = PaymentList.as_view()
+
+
+class PaymentCreate(CreateView):
+    model = Payment
+    template_name = "financial/payment/paymentCreateUpdate.html"
+    fields = '__all__'
+    success_url = _('financial:payment_list')
+
+payment_create = PaymentCreate.as_view()
+
+
+class PaymentDetails(DetailView):
+    model = Payment
+    template_name = "financial/payment/paymentDetails.html"
+
+payment_details = PaymentDetails.as_view()
+
+
+class PaymentUpdate(UpdateView):
+    model = Payment
+    template_name = "financial/payment/paymentCreateUpdate.html"
+    fields = '__all__'
+    success_url = _('financial:payment_list')
+
+Payment_update = PaymentUpdate.as_view()
+
+
+class PaymentDelete(DeleteView):
+    model = Payment
+    template_name = "financial/payment/paymentDelete.html"
+    success_url = _('financial:payment_list')
+
+payment_delete = PaymentDelete.as_view()

@@ -1,0 +1,12 @@
+<!-- person_detail.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Register Details</h1>
+
+<ul>
+  {% for obj in object %}
+  <li>{{ obj }}</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
