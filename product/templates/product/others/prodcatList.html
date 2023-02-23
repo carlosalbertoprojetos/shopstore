@@ -19,12 +19,13 @@
     <tr>
       <td>{{ object.name }}</td>
       <td>{{ object.details}}</td>
-      <a href="{{ object.catunit_gau_edit }}">
-        <i class="fa fa-edit"></i>
-      </a>
-      <a href="{{ object.catunit_gau_delete }}" style="padding-left: 7px">
-        <i class="fa fa-close no"></i>
-      </a>
+      <td>
+        <a href="{{ object.catunit_gau_edit }}">
+          <i class="fa fa-edit"></i>
+        </a>
+        <a href="{{ object.catunit_gau_delete }}" style="padding-left: 7px">
+          <i class="fa fa-close no"></i>
+        </a>
       </td>
     </tr>
     {% endfor %}

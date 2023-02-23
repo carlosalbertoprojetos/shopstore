@@ -84,7 +84,7 @@ product_list = ProductList.as_view()
 
 class ProductCreate(CreateView):
     model = Product
-    template_name = "product/others/productCreateUpdate.html"
+    template_name = "product/productCreateUpdate.html"
     fields = '__all__'
     success_url = _('product:product_list')
 
@@ -100,7 +100,7 @@ product_details = ProductDetails.as_view()
 
 class ProductUpdate(UpdateView):
     model = Product
-    template_name = "product/others/productCreateUpdate.html"
+    template_name = "product/productCreateUpdate.html"
     fields = '__all__'
     success_url = _('product:product_list')
 
@@ -109,7 +109,7 @@ product_update = ProductUpdate.as_view()
 
 class ProductDelete(DeleteView):
     model = Product
-    template_name = "product/others/productDelete.html"
+    template_name = "product/productDelete.html"
     success_url = _('product:product_list')
 
 product_delete = ProductDelete.as_view()

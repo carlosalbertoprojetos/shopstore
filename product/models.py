@@ -25,14 +25,14 @@ class ProductCategory(models.Model):
         return self.name
 
     def catunit_gau_edit(self):
-        return _('product:catpro_update', args=[self.pk])
+        return _('product:prodcat_update', args=[self.pk])
 
     def catunit_gau_delete(self):
-        return _('product:catpro_delete', args=[self.pk])
+        return _('product:prodcat_delete', args=[self.pk])
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=8)
+    name = models.CharField(max_length=255)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     description = models.CharField(max_length=100, blank=True)
     valueBuy = models.DecimalField(max_digits=9, decimal_places=2)

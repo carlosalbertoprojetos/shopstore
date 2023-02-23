@@ -93,7 +93,7 @@ class Release(models.Model):
     createdin = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.order
+        return str(self.order)
 
     def release_gau_edit(self):
         return _('financial:release_update', args=[self.pk])

@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy as _
 
 
 from register.models import Register
@@ -41,7 +41,7 @@ class Order(models.Model):
         ordering = ['-date']
 
     def __str__(self):
-        return self.name
+        return str(self.register)
 
     def order_gau_detail(self):
         return _('order:order_details', args=[self.pk])
