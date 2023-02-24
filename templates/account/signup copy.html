@@ -2,7 +2,6 @@
 
 {% load static %}
 {% load i18n %}
-{% load account socialaccount %}
 
 {% block title %}SignUp{% endblock %}
 
@@ -77,6 +76,7 @@
                     <button class="btn btn-primary w-100" type="submit">{% trans "Create Account" %}</button>
                   </div>
 
+
                   <div class="login-or" align="center">{% trans 'or' %} </div>
 
                   {% get_providers as socialaccount_providers %}
@@ -97,6 +97,12 @@
                     <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
                   </p>
                   {% endif %}
+
+                  <div class="col-12">
+                    <p class="small mb-0">Don't have account? <a href="{% url 'account_signup' %}"> Create an
+                        account</a></p>
+                  </div>
+
 
                   <div class="col-12">
                     <p class="small mb-0">Already have an account? <a href="{% url 'account_login' %}">Log in</a></p>

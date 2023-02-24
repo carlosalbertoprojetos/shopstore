@@ -180,9 +180,7 @@ ACCOUNT_SESSION_REMEMBER = True
 
 # Faz com que o usuário, ao se cadastrar, receba um email de confirmação
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# Não precisa de username
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-# ACCOUNT_USERNAME_REQUIRED = False
+
 # Método de autenticação: email
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # Email obrigatório
@@ -190,13 +188,15 @@ ACCOUNT_EMAIL_REQUIRED = True
 # Email único
 ACCOUNT_UNIQUE_EMAIL = True
 
+# confirmação de cadastro por email / loga somente após esta confirmação
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-# AUTH_USER_MODEL = 'user.User'
+# redirecionar ao clicar no link de confirmação de email
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/login/'
 
-
-LOGIN_URL = '/login/'
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_URL = '/logout/'
+LOGOUT_URL = '/accounts/logout/'
 LOGOUT_REDIRECT_URL = '/'
 
 
