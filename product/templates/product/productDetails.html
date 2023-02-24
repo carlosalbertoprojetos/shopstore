@@ -1,7 +1,10 @@
-<!-- person_detail.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
+{% block title %}Product{% endblock %}
+
+{% block dashboard %}
+<main id="main" class="main">
   <h1>Details</h1>
 
   <ul>
@@ -12,4 +15,5 @@
     <li><b>Created in:</b> {{ object.createdin }}</li>
     <li><b>Active:</b> {{ object.active }}</li>
   </ul>
-{% endblock content %}
+</main>
+{% endblock %}

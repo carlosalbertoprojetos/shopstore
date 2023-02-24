@@ -1,11 +1,15 @@
-<!-- person_detail.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-<h1>Details</h1>
+{% block title %}Register{% endblock %}
 
-<ul>
-  <li>{{ object.name }}</li>
-</ul>
-
-{% endblock content %}
+{% block dashboard %}
+<main id="main" class="main">
+  <h1>Details</h1>
+  {% for obj in object_list %}
+  <ul>
+    <li>{{ obj }}</li>
+  </ul>
+  {% endfor %}
+</main>
+{% endblock %}

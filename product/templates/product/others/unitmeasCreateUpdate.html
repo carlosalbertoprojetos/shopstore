@@ -1,18 +1,22 @@
-<!-- person_form.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-<h1>Unit of measurement</h1>
-<div class="cols-6">
-  <form class="form-horizontal" action="." method="POST" enctype="multipart/form-data">
-    <div class="col-sm-6">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a class="btn btn-danger" href="{% url 'product:unitmeas_list' %}">Cancel</a>
+{% block title %}Unit of measurement{% endblock %}
+
+{% block dashboard %}
+<main id="main" class="main">
+  <h1>Unit of measurement</h1>
+  <div class="cols-6">
+    <form class="form-horizontal" action="." method="POST" enctype="multipart/form-data">
+      <div class="col-sm-6">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <a class="btn btn-danger" href="{% url 'product:unitmeas_list' %}">Cancel</a>
+        </div>
       </div>
-    </div>
-  </form>
-</div>
-{% endblock content %}
+    </form>
+  </div>
+</main>
+{% endblock %}

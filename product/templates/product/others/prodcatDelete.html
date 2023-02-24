@@ -1,18 +1,22 @@
-<!-- person_delete.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-<h1>Delete</h1>
-<div class="cols-6">
-  <form action="." method="POST">
-    <div class="col-sm-6">
-      {% csrf_token %}
-      <p>Delete {{ object }}?</p>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Confirm</button>
-        <a class="btn btn-danger" href="{% url 'product:prodcat_list' %}">Cancel</a>
+{% block title %}Product Category{% endblock %}
+
+{% block dashboard %}
+<main id="main" class="main">
+  <h1>Delete</h1>
+  <div class="cols-6">
+    <form action="." method="POST">
+      <div class="col-sm-6">
+        {% csrf_token %}
+        <p>Delete {{ object }}?</p>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Confirm</button>
+          <a class="btn btn-danger" href="{% url 'product:prodcat_list' %}">Cancel</a>
+        </div>
       </div>
-    </div>
-  </form>
-</div>
-{% endblock content %}
+    </form>
+  </div>
+</main>
+{% endblock %}
