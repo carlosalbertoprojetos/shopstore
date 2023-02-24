@@ -195,10 +195,11 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/login/'
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_URL = '/accounts/logout/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+ACCOUNT_LOGOUT_ON_GET = True
 
 # django-crispy-forms.
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

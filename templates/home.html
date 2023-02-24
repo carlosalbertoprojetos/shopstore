@@ -3,22 +3,75 @@
 {% block title %}Loja Python{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h3>Sistema STORE</h3><br><br>
-    <h1>Bem vindo {{ user }} !!!</h1><br>
-    <h4>O sistema tem como funções:
-        cadastrar, exibir, editar e deletar: usuários, acessar e sair, editar, exibir e excluir usuários,
-        recuperar de senha, por meio de
-        link enviado para o email do usuário, e encaminhar mensagens ao administrado do framework por formulário
-        próprio.</h4><br>
+
+
+<header>
+    <nav class="navbar navbar-expand navbar-dark bg-dark mb-3">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Login/Register Base</a>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">Sair</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_login' %}">Entrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_signup' %}">Cadastrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contato</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+{% if messages %}
+<div>
+    <strong>Messages:</strong>
     <ul>
-        <li>Login</li>
-        <li>Logout</li>
-        <li>Registro</li>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="container">
+    <h3>STORE</h3><br><br>
+    <h1>Bem vindo {{ user }} !!!</h1><br>
+    <h4>Funções do sistema:
+        cadastrar, exibir, editar e deletar: usuário, conta(financeiro), faturamento, pagamentos, fornecedore/cliente,
+        produto, pedido,
+
+
+        O cadastro de usuário realiza-se com o nome de usuário(username), email, senha e a confirmação de senha. Esta
+        por link enviado para o email cadastrado.
+
+        A recuperação de senha realiza-se através de um link enviado para o email do usuário.</h4><br>
+    <ul>
+        <li>Cadastro</li>
+        <li>Confirmação de email</li>
+        <li>Login/Logout</li>
+        <li>Usuário ativo/inativo</li>
+        <li>Recuperação de senha</li>
         <li>Exibição</li>
         <li>Edição</li>
-        <li>Recuperação de senha</li>
         <li>Exclusão</li>
+
+        <li>Dashboard</li>
+
+
+        <li>Login</li>
+        <li>Login</li>
+        <li>Login</li>
+
+
     </ul>
 </div>
 {% endblock %}

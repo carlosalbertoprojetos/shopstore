@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('dashboard/', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
 
     path('financial/', include('financial.urls'), name='financial'),
     path('order/', include('order.urls'), name='order'),
