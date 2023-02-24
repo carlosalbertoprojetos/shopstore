@@ -5,18 +5,93 @@
 
 {% block dashboard %}
 <main id="main" class="main">
-  <h1>Register</h1>
-  <div class="cols-6">
-    <form class="form-horizontal" action="." method="POST" enctype="multipart/form-data">
-      <div class="col-sm-6">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <a class="btn btn-danger" href="{% url 'register:register_list' %}">Cancel</a>
-        </div>
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Register</h5>
+        <form class="form-horizontal" action="." method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row mb-3">
+            <label for="id_name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="name" id="id_name">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_cell_main" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" name="cell_main" id="id_cell_main">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_cell_contact" class="col-sm-2 col-form-label">Phone2</label>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" name="cell_contact" id="id_cell_contact">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" name="email" id="id_email">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_document" class="col-sm-2 col-form-label">Document</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="document" id="id_document">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_street" class="col-sm-2 col-form-label">Street</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="street" id="id_street">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_number" class="col-sm-2 col-form-label">Number</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="number" id="id_number">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_zipcode" class="col-sm-2 col-form-label">Zipcode</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="zipcode" id="id_zipcode">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_state" class="col-sm-2 col-form-label">State</label>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example" name="id_state" id="id_state">
+                {% for item in form.state %}
+                <option>{{ item }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="id_city" class="col-sm-2 col-form-label">City</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="city" id="id_city">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Active</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked="" name="city" id="id_city">
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3 d-flex float-end">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <a class="btn btn-danger" href="{% url 'register:register_list' %}">Cancel</a>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </main>
 {% endblock %}
