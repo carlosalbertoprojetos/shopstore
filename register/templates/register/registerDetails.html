@@ -6,10 +6,18 @@
 {% block dashboard %}
 <main id="main" class="main">
   <h1>Details</h1>
-  {% for obj in object_list %}
+
   <ul>
-    <li>{{ obj }}</li>
+    <li><b>Name:</b>{{ object.cell_main }}</li>
+    <li><b>Cell:</b>{{ object.cell_contact }}</li>
+    <li><b>Phone:</b>{{ object.email }}</li>
+    <li><b>Document:</b>{{ object.document }}</li>
+    <li><b>Street:</b>{{ object.street }}</li>
+    <li><b>Number:</b>{{ object.number }}</li>
+    <li><b>Zipcode:</b>{{ object.zipcode }}</li>
+    <li><b>State:</b>{{ object.state }}</li>
+    <li><b>City:</b>{{ object.city }}</li>
+    <li><b>Active:</b>{{ object.active }}</li>
   </ul>
-  {% endfor %}
 </main>
 {% endblock %}
