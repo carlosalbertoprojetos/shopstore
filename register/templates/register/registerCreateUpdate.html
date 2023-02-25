@@ -9,60 +9,60 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Register</h5>
-        <form class="form-horizontal" action="." method="POST" enctype="multipart/form-data">
+        <form class="form-horizontal" action="" method="POST" enctype="">
           {% csrf_token %}
           <div class="row mb-3">
             <label for="id_name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="name" id="id_name">
+              {{ form.name }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_cell_main" class="col-sm-2 col-form-label">Phone</label>
             <div class="col-sm-10">
-              <input type="tel" class="form-control" name="cell_main" id="id_cell_main">
+              {{ form.cell_main }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_cell_contact" class="col-sm-2 col-form-label">Phone2</label>
             <div class="col-sm-10">
-              <input type="tel" class="form-control" name="cell_contact" id="id_cell_contact">
+              {{ form.cell_contact }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" name="email" id="id_email">
+              {{ form.email }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_document" class="col-sm-2 col-form-label">Document</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" name="document" id="id_document">
+              {{ form.document }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_street" class="col-sm-2 col-form-label">Street</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="street" id="id_street">
+              {{ form.street }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_number" class="col-sm-2 col-form-label">Number</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" name="number" id="id_number">
+              {{ form.number }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_zipcode" class="col-sm-2 col-form-label">Zipcode</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" name="zipcode" id="id_zipcode">
+              {{ form.zipcode }}
             </div>
           </div>
           <div class="row mb-3">
             <label for="id_state" class="col-sm-2 col-form-label">State</label>
             <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example" name="id_state" id="id_state">
+              <select class="form-select" aria-label="Default select example" name="state" id="id_state">
                 {% for item in form.state %}
                 <option>{{ item }}</option>
                 {% endfor %}
@@ -72,20 +72,20 @@
           <div class="row mb-3">
             <label for="id_city" class="col-sm-2 col-form-label">City</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="city" id="id_city">
+              {{ form.city }}
             </div>
           </div>
           <div class="row mb-3">
             <legend class="col-form-label col-sm-2 pt-0">Active</legend>
             <div class="col-sm-10">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" checked="" name="city" id="id_city">
+                <input class="form-check-input" type="checkbox" checked="" name="active" id="id_active">
               </div>
             </div>
           </div>
           <div class="row mb-3 d-flex float-end">
             <div class="col-sm-12">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" value="Update">Submit</button>
               <a class="btn btn-danger" href="{% url 'register:register_list' %}">Cancel</a>
             </div>
           </div>
@@ -94,4 +94,14 @@
     </div>
   </div>
 </main>
+
+{% endblock %}
+
+{% block script %}
+<script>
+  $(document).ready(function () {
+    $('#id_cell_main').mask('(00) 0000-0000');
+    $('#id_cell_contact').mask('(00) 0000-0000');
+  })
+</script>
 {% endblock %}

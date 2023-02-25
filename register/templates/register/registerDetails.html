@@ -1,23 +1,67 @@
 {% extends 'dashboard.html' %}
 {% load static %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Details{% endblock %}
 
 {% block dashboard %}
 <main id="main" class="main">
-  <h1>Details</h1>
-
-  <ul>
-    <li><b>Name:</b>{{ object.cell_main }}</li>
-    <li><b>Cell:</b>{{ object.cell_contact }}</li>
-    <li><b>Phone:</b>{{ object.email }}</li>
-    <li><b>Document:</b>{{ object.document }}</li>
-    <li><b>Street:</b>{{ object.street }}</li>
-    <li><b>Number:</b>{{ object.number }}</li>
-    <li><b>Zipcode:</b>{{ object.zipcode }}</li>
-    <li><b>State:</b>{{ object.state }}</li>
-    <li><b>City:</b>{{ object.city }}</li>
-    <li><b>Active:</b>{{ object.active }}</li>
-  </ul>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Register Details</h5>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="true">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+            role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="adress-tab" data-bs-toggle="tab" data-bs-target="#adress" type="button"
+            role="tab" aria-controls="adress" aria-selected="false" tabindex="-1">Adress</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button"
+            role="tab" aria-controls="orders" aria-selected="false" tabindex="-1">Orders</button>
+        </li>
+      </ul>
+      <div class="tab-content pt-4" id="myTabContent">
+        <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="card mb-1 p-3">
+            <p><b>Name: </b> {{ object.name }}</p>
+            <p><b>Document: </b> {{ object.document }}</p>
+            <p><b>Active: </b> {{ object.active }}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <div class="card mb-1 p-3">
+            <p><b>Cell: </b> {{ object.cell_main }}</p>
+            <p><b>Phone: </b> {{ object.cell_contact }}</p>
+            <p><b>Email: </b> {{ object.email }}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="adress" role="tabpanel" aria-labelledby="adress-tab">
+          <div class="card mb-1 p-3">
+            <p><b>Street: </b> {{ object.street }}</p>
+            <p><b>Number: </b> {{ object.number }}</p>
+            <p><b>Zipcode: </b> {{ object.zipcode }}</p>
+            <p><b>State: </b> {{ object.state }}</p>
+            <p><b>City: </b> {{ object.city }}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+          <div class="card mb-1 p-3">
+            <p class="">
+              Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam
+              perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum
+              iure.
+              Dignissimos fuga tempore dolor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 {% endblock %}
