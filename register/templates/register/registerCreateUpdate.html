@@ -11,84 +11,69 @@
         <h5 class="card-title">Register</h5>
         <form class="form-horizontal" action="" method="POST" enctype="">
           {% csrf_token %}
-          <div class="row mb-3">
-            <label for="id_name" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <label for="id_name" class="col-form-label">Name</label>
               {{ form.name }}
             </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_cell_main" class="col-sm-2 col-form-label">Phone</label>
-            <div class="col-sm-10">
-              {{ form.cell_main }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_cell_contact" class="col-sm-2 col-form-label">Phone2</label>
-            <div class="col-sm-10">
-              {{ form.cell_contact }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_email" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-              {{ form.email }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_document" class="col-sm-2 col-form-label">Document</label>
-            <div class="col-sm-10">
+            <div class="col-6 col-lg-4">
+              <label for="id_document" class="col-form-label">Document</label>
               {{ form.document }}
             </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_street" class="col-sm-2 col-form-label">Street</label>
-            <div class="col-sm-10">
-              {{ form.street }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_number" class="col-sm-2 col-form-label">Number</label>
-            <div class="col-sm-10">
-              {{ form.number }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_zipcode" class="col-sm-2 col-form-label">Zipcode</label>
-            <div class="col-sm-10">
-              {{ form.zipcode }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_state" class="col-sm-2 col-form-label">State</label>
-            <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example" name="state" id="id_state">
-                {% for item in form.state %}
-                <option>{{ item }}</option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="id_city" class="col-sm-2 col-form-label">City</label>
-            <div class="col-sm-10">
-              {{ form.city }}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <legend class="col-form-label col-sm-2 pt-0">Active</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" checked="" name="active" id="id_active">
+            <div class="col-6 col-lg-2">
+              <legend class="col-form-label">Active</legend>
+              <div class="form-check ms-1">
+                <input class="form-check-input ps-0" type="checkbox" checked="" name="active" id="id_active">
               </div>
             </div>
           </div>
-          <div class="row mb-3 d-flex float-end">
-            <div class="col-sm-12">
-              <button type="submit" class="btn btn-primary" value="Update">Submit</button>
-              <a class="btn btn-danger" href="{% url 'register:register_list' %}">Cancel</a>
+          <div class="row">
+            <div class="col-6 col-lg-3">
+              <label for="id_cell_main" class="col-form-label">Phone</label>
+              {{ form.cell_main }}
+            </div>
+            <div class="col-6 col-lg-3">
+              <label for="id_cell_contact" class="col-form-label">Phone2</label>
+              {{ form.cell_contact }}
+            </div>
+            <div class="col-12 col-lg-6">
+              <label for="id_email" class="col-form-label">Email</label>
+              {{ form.email }}
             </div>
           </div>
+          <div class="row">
+            <div class="row">
+              <div class="col-12 col-lg-6">
+                <label for="id_street" class="col-form-label">Street</label>
+                {{ form.street }}
+              </div>
+              <div class="col-4 col-lg-6">
+                <label for="id_number" class="col-form-label">Number</label>
+                {{ form.number }}
+              </div>
+              <div class="col-4 col-lg-4">
+                <label for="id_zipcode" class="col-form-label">Zipcode</label>
+                {{ form.zipcode }}
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="id_city" class="col-form-label">City</label>
+                {{ form.city }}
+              </div>
+              <div class="col-3 col-lg-2">
+                <label for="id_state" class="col-form-label">State</label>
+                <select class="form-select" aria-label="Default select example" name="state" id="id_state">
+                  {% for item in form.state %}
+                  <option>{{ item }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="row my-3">
+              <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
+                <a class="btn btn-danger btn-sm" href="{% url 'register:register_list' %}">Cancel</a>
+              </div>
+            </div>
         </form>
       </div>
     </div>

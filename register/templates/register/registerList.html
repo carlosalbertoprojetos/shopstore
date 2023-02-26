@@ -4,55 +4,85 @@
 {% block title %}Registers{% endblock %}
 
 {% block dashboard %}
-
-
 <main id="main" class="main">
-  <div class="card">
-    <div class="row card-body align-items-center">
-      <div class="col-6">
-        <h5 class="card-title">Register</h5>
-      </div>
-      <div class="col-6">
-        <a class="d-flex float-end" href="{% url 'register:register_create' %}">
-          <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
-        </a>
-      </div>
+  <div class="row align-items-center pb-2">
+    <div class="col-6">
+      <h5 class="">Register</h5>
+    </div>
+    <div class="col-6">
+      <a class="d-flex float-end" href="{% url 'register:register_create' %}">
+        <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
+      </a>
+    </div>
+  </div>
 
-      <table class="table table-sm" id="id_table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Cell</th>
-            <th scope="col">Email</th>
-            <th scope="col">Document</th>
-            <th scope="col">Edit/Del</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for object in object_list %}
-          <tr>
-            <td scope="row">{{ object.id}}</td>
-            <td>
-              <a href="{{ object.register_gau_detail }}">{{ object.name }}</a>
-            </td>
-            <td>{{ object.cell_main}}</td>
-            <td>{{ object.email}}</td>
-            <td>{{ object.document}}</td>
-            <td>
-              <a class="px-2" href="{{ object.register_gau_edit }}">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a class="px-2" href="{{ object.register_gau_delete }}" style="padding-left: 7px">
-                <i class="fa fa-close no"></i>
-              </a>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+  <table class="table table-sm" id="id_table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Cell</th>
+        <th scope="col">Email</th>
+        <th scope="col">Document</th>
+        <th scope="col">Edit/Del</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <tr>
+        <td scope="row">{{ object.id}}</td>
+        <td>
+          <a href="{{ object.register_gau_detail }}">{{ object.name }}</a>
+        </td>
+        <td>{{ object.cell_main}}</td>
+        <td>{{ object.email}}</td>
+        <td>{{ object.document}}</td>
+        <td>
+          <a class="px-2" href="{{ object.register_gau_edit }}">
+            <i class="fa fa-edit"></i>
+          </a>
+          <!-- <a class="px-2" href="{{ object.register_gau_delete }}" style="padding-left: 7px">
+            <i class="fa fa-close no"></i>
+          </a> -->
+          <a class="px-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="padding-left: 7px">
+            <i class="fa fa-close no"></i>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+  </button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
+        </div>
+        <form action="." method="POST" name="form2" id="id_form2" action="{{ object.register_gau_delete }}">
+          <div class="col-sm-6">
+            {% csrf_token %}
+            <p>Are you sure you want to delete {{ object.name }}?</p>
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Understood</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </main>
 
+
+{% endblock dashboard %}
 
 {% block script %}
 <!-- Jquery -->
@@ -66,7 +96,13 @@
   $(document).ready(function () {
     $('#id_table').DataTable();
   });
+
+
+  var myModal = document.getElementById('myModal')
+  var myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', function () {
+    myInput.focus()
+  })
 </script>
 {% endblock script %}
-
-{% endblock dashboard %}

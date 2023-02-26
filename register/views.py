@@ -41,7 +41,7 @@ register_update = RegisterUpdate.as_view()
 
 class RegisterDelete(DeleteView):
     model = Register
-    template_name = "register/registerDelete.html"
+    template_name = "register/register_list.html"
     success_url = _('register:register_list')
 
 register_delete = RegisterDelete.as_view()

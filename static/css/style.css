@@ -10,6 +10,7 @@
 --------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
+  --bs-body-font-size: 0.8rem;
 }
 
 body {
@@ -1278,4 +1279,22 @@ form input {
   appearance: none;
   border-radius: .375rem;
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/* #id_table_filter,
+#id_table_length,
+#id_table_info,
+#id_table_paginate {
+  padding: 30px;
+} */
+
+#id_stock input[readonly],
+#id_available input[readonly] {
+  background-color: #f6f9ff;
+}
+
+
+form input,
+.form-select {
+  font-size: 0.8rem;
 }

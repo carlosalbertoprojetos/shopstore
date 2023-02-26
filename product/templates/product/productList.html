@@ -1,29 +1,33 @@
 {% extends 'dashboard.html' %}
 {% load static %}
 
-{% block title %}Product{% endblock %}
+{% block title %}Products{% endblock %}
 
 {% block dashboard %}
 <main id="main" class="main">
-  <h1>
-    Products
-    <a class="btn btn-primary" href="{% url 'product:product_create' %}">Add</a>
-  </h1>
-  <table class="table">
+  <div class="row align-items-center pb-2">
+    <div class="col-6">
+      <h5 class="">Product</h5>
+    </div>
+    <div class="col-6">
+      <a class="d-flex float-end" href="{% url 'product:product_create' %}">
+        <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
+      </a>
+    </div>
+  </div>
+
+  <table class="table table-sm" id="id_table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Buy</th>
-        <th>Sell</th>
-        <th>details</th>
-        <th>Stock</th>
-        <th>Available</th>
-        <th>Is Active</th>
-        <th>Updated</th>
-        <th>Created in</th>
-        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">Value Buy</th>
+        <th scope="col">Value Sell</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Available</th>
+        <th scope="col">Active</th>
+        <th scope="col">Edit/Del</th>
       </tr>
     </thead>
     <tbody>
@@ -34,19 +38,16 @@
         </td>
         <td>{{ object.category}}</td>
         <td>{{ object.description}}</td>
-        <td>{{ object.valueBuy}}</td>
-        <td>{{ object.valueSell}}</td>
-        <td>{{ object.details}}</td>
-        <td>{{ object.stock}}</td>
-        <td>{{ object.available}}</td>
+        <td align='center'>{{ object.valueBuy}}</td>
+        <td align='center'>{{ object.valueSell}}</td>
+        <td align='center'>{{ object.stock}}</td>
+        <td align='center'>{{ object.available}}</td>
         {% if object.active %}
         <td align='center'><i class="fa fa-check"></i></td>
         {% else %}
         <td align='center'><i class="fa fa-close"></i></td>
         {% endif %}
-        <td>{{ object.updated}}</td>
-        <td>{{ object.createdin}}</td>
-        <td>
+        <td align='center'>
           <a href="{{ object.product_gau_edit }}">
             <i class="fa fa-edit"></i>
           </a>
@@ -58,6 +59,25 @@
       {% endfor %}
     </tbody>
   </table>
+
 </main>
 {% comment %} {% include "includes/pagination.html" %} {% endcomment %}
 {% endblock %}
+
+
+{% block script %}
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<!-- DataTable JS -->
+<script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#id_table').DataTable();
+  });
+</script>
+
+{% endblock script %}
