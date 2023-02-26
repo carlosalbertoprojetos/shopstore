@@ -30,21 +30,18 @@
     <tbody>
       {% for object in object_list %}
       <tr>
-        <td scope="row">{{ object.id}}</td>
+        <td scope="row">{{ object.id }}</td>
         <td>
           <a href="{{ object.register_gau_detail }}">{{ object.name }}</a>
         </td>
-        <td>{{ object.cell_main}}</td>
-        <td>{{ object.email}}</td>
-        <td>{{ object.document}}</td>
+        <td>{{ object.cell_main }}</td>
+        <td>{{ object.email }}</td>
+        <td>{{ object.document }}</td>
         <td>
           <a class="px-2" href="{{ object.register_gau_edit }}">
             <i class="fa fa-edit"></i>
           </a>
-          <!-- <a class="px-2" href="{{ object.register_gau_delete }}" style="padding-left: 7px">
-            <i class="fa fa-close no"></i>
-          </a> -->
-          <a class="px-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="padding-left: 7px">
+          <a class="px-2" href="{{ object.register_gau_delete }}" style="padding-left: 7px">
             <i class="fa fa-close no"></i>
           </a>
         </td>
@@ -52,57 +49,24 @@
       {% endfor %}
     </tbody>
   </table>
-  <!-- Button trigger modal -->
-  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Launch static backdrop modal
-  </button> -->
-
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
-        </div>
-        <form action="." method="POST" name="form2" id="id_form2" action="{{ object.register_gau_delete }}">
-          <div class="col-sm-6">
-            {% csrf_token %}
-            <p>Are you sure you want to delete {{ object.name }}?</p>
-          </div>
-          <div class="modal-footer">
-            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Understood</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</main>
 
 
-{% endblock dashboard %}
+  {% endblock dashboard %}
 
-{% block script %}
-<!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  {% block script %}
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
 
-<!-- DataTable JS -->
-<script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+  <!-- DataTable JS -->
+  <script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
-<script>
-  $(document).ready(function () {
-    $('#id_table').DataTable();
-  });
+  <script>
+    $(document).ready(function () {
+      $('#id_table').DataTable();
+    });
 
 
-  var myModal = document.getElementById('myModal')
-  var myInput = document.getElementById('myInput')
-
-  myModal.addEventListener('shown.bs.modal', function () {
-    myInput.focus()
-  })
-</script>
-{% endblock script %}
+  </script>
+  {% endblock script %}
