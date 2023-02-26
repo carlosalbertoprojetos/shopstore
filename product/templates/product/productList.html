@@ -36,12 +36,12 @@
         <td>
           <a href="{{ object.product_gau_detail }}">{{ object.name }}</a>
         </td>
-        <td>{{ object.category}}</td>
-        <td>{{ object.description}}</td>
-        <td align='center'>{{ object.valueBuy}}</td>
-        <td align='center'>{{ object.valueSell}}</td>
-        <td align='center'>{{ object.stock}}</td>
-        <td align='center'>{{ object.available}}</td>
+        <td>{{ object.category }}</td>
+        <td>{{ object.description }}</td>
+        <td align='center'>{{ object.valueBuy }}</td>
+        <td align='center'>{{ object.valueSell }}</td>
+        <td align='center'>{{ object.stock }}</td>
+        <td align='center'>{{ object.available }}</td>
         {% if object.active %}
         <td align='center'><i class="fa fa-check"></i></td>
         {% else %}
@@ -59,9 +59,8 @@
       {% endfor %}
     </tbody>
   </table>
-
 </main>
-{% comment %} {% include "includes/pagination.html" %} {% endcomment %}
+
 {% endblock %}
 
 

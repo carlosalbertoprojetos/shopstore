@@ -1,15 +1,50 @@
-<!-- person_detail.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-  <h1>Details</h1>
+{% block title %}Bank Details{% endblock %}
 
-  <ul>
-    <li><b>Name:</b> {{ object.name }}</li>
-    <li><b>E-mail:</b> {{ object.number}}</li>
-    <li><b>Agency:</b> {{ object.agency }}</li>
-    <li><b>Detail:</b> {{ object.detail }}</li>
-    <li><b>Created in:</b> {{ object.createdin }}</li>
-    <li><b>Active:</b> {{ object.active }}</li>
-  </ul>
-{% endblock content %}
+{% block dashboard %}
+<main id="main" class="main">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Bank Details</h5>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="true">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="accounting-tab" data-bs-toggle="tab" data-bs-target="#accounting" type="button"
+            role="tab" aria-controls="accounting" aria-selected="false" tabindex="-1">Accounting</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="adress-tab" data-bs-toggle="tab" data-bs-target="#adress" type="button"
+            role="tab" aria-controls="adress" aria-selected="false" tabindex="-1">Details</button>
+        </li>
+      </ul>
+      <div class="tab-content pt-4" id="myTabContent">
+        <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="card mb-1 p-3">
+            <p><b>Name:</b> {{ object.name }}</p>
+            <p><b>Number:</b> {{ object.number}}</p>
+            <p><b>Agency:</b> {{ object.agency }}</p>
+            <p><b>Details:</b> {{ object.details }}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="accounting" role="tabpanel" aria-labelledby="accounting-tab">
+          <div class="card mb-1 p-3">
+            <p>you can enter any information you want here</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="adress" role="tabpanel" aria-labelledby="adress-tab">
+          <div class="card mb-1 p-3">
+            <p><b>Active:</b> {{ object.active }}</p>
+            <p><b>Updated:</b> {{ object.updated|date:"Y/M/d" }}</p>
+            <p><b>Created:</b> {{ object.createdin|date:"Y/M/d" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

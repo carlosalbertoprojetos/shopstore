@@ -207,7 +207,7 @@ class FormPaymentList(ListView):
     model = FormPayment
     template_name = 'financial/payment/formPayList.html'
 
-payment_list = FormPaymentList.as_view()
+formpayment_list = FormPaymentList.as_view()
 
 
 class FormPaymentCreate(CreateView):
@@ -216,7 +216,7 @@ class FormPaymentCreate(CreateView):
     fields = '__all__'
     success_url = _('financial:formpay_list')
 
-payment_create = FormPaymentCreate.as_view()
+formpayment_create = FormPaymentCreate.as_view()
 
 
 class FormPaymentUpdate(UpdateView):
@@ -225,7 +225,7 @@ class FormPaymentUpdate(UpdateView):
     fields = '__all__'
     success_url = _('financial:formpay_list')
 
-payment_update = FormPaymentUpdate.as_view()
+formpayment_update = FormPaymentUpdate.as_view()
 
 
 class FormPaymentDelete(DeleteView):
@@ -233,7 +233,7 @@ class FormPaymentDelete(DeleteView):
     template_name = "financial/payment/formPayDelete.html"
     success_url = _('financial:formpay_list')
 
-payment_delete = FormPaymentDelete.as_view()
+formpayment_delete = FormPaymentDelete.as_view()
 
 
 # Payment -----------------------------------------------------------------
