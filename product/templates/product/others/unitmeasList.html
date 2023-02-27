@@ -1,13 +1,13 @@
 {% extends 'dashboard.html' %}
 {% load static %}
 
-{% block title %}Unit of measurement{% endblock %}
+{% block title %}Units of Measurement{% endblock %}
 
 {% block dashboard %}
 <main id="main" class="main">
   <div class="row align-items-center pb-2">
     <div class="col-6">
-      <h5 class="">Unit of measurement</h5>
+      <h5 class="">Units of Measurement</h5>
     </div>
     <div class="col-6">
       <a class="d-flex float-end" href="{% url 'product:unitmeas_create' %}">
@@ -17,6 +17,7 @@
   </div>
 
   <table class="table table-sm" id="id_table">
+    <caption>Units of Measurement</caption>
     <thead>
       <tr>
         <th scope="col">Name</th>

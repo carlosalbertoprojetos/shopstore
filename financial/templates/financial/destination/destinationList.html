@@ -1,13 +1,13 @@
 {% extends 'dashboard.html' %}
 {% load static %}
 
-{% block title %}Destination{% endblock %}
+{% block title %}Destinations{% endblock %}
 
 {% block dashboard %}
 <main id="main" class="main">
   <div class="row align-items-center pb-2">
     <div class="col-6">
-      <h5 class="">Destination</h5>
+      <h5 class="">Destinations</h5>
     </div>
     <div class="col-6">
       <a class="d-flex float-end" href="{% url 'financial:destination_create' %}">
@@ -17,6 +17,7 @@
   </div>
 
   <table class="table table-sm" id="id_table">
+    <caption>Destinations</caption>
     <thead>
       <tr>
         <th scope="col">Name</th>

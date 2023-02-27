@@ -1,13 +1,13 @@
 {% extends 'dashboard.html' %}
 {% load static %}
 
-{% block title %}Product Category{% endblock %}
+{% block title %}Product Categories{% endblock %}
 
 {% block dashboard %}
 <main id="main" class="main">
   <div class="row align-items-center pb-2">
     <div class="col-6">
-      <h5 class="">Product Category</h5>
+      <h5 class="">Product Categories</h5>
     </div>
     <div class="col-6">
       <a class="d-flex float-end" href="{% url 'product:prodcat_create' %}">
@@ -17,6 +17,7 @@
   </div>
 
   <table class="table table-sm" id="id_table">
+    <caption>Product Categories</caption>
     <thead>
       <tr>
         <th scope="col">Name</th>
