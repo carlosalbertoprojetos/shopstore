@@ -24,10 +24,10 @@ class ProductCategory(models.Model):
     def __str__(self):
         return self.name
 
-    def catunit_gau_edit(self):
+    def prodcat_gau_edit(self):
         return _('product:prodcat_update', args=[self.pk])
 
-    def catunit_gau_delete(self):
+    def prodcat_gau_delete(self):
         return _('product:prodcat_delete', args=[self.pk])
 
 

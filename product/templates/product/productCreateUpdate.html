@@ -11,12 +11,12 @@
         <h5 class="card-title">Product</h5>
         <form class="form-horizontal" action="" method="POST" enctype="">
           {% csrf_token %}
-          <div class="row">
+          <div class="row align-items-center">
             <div class="col-12 col-lg-6">
               <label for="id_name" class="col-form-label">Name</label>
               {{ form.name }}
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-3 col-lg-3">
               <label for="id_category" class="col-form-label">Category</label>
               <select class="form-select" aria-label="Default select example" name="category" id="id_category">
                 {% for item in form.category %}
@@ -24,7 +24,10 @@
                 {% endfor %}
               </select>
             </div>
-            <div class="col-12 col-lg-2">
+            <div class="col-1 col-lg-1 pt-4">
+              <a href="{% url 'product:prodcat_create' %}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            </div>
+            <div class="col-2 col-lg-2">
               <legend class="col-form-label">Active</legend>
               <div class="form-check ms-1">
                 <input class="form-check-input ps-0" type="checkbox" checked="" name="active" id="id_active">

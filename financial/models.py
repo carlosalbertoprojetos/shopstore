@@ -64,6 +64,9 @@ class DestinationCategory(models.Model):
     name = models.CharField(max_length=50)
     details = models.CharField(max_length=255, null=True, blank=True)
 
+    def __str__(self):
+        return str(self.name)
+
     def destcat_gau_edit(self):
         return _('financial:destcat_update', args=[self.pk])
 
@@ -74,6 +77,9 @@ class Destination(models.Model):
     name = models.CharField( max_length=50)
     category = models.ForeignKey(DestinationCategory, on_delete=models.CASCADE)
     details = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.name)
 
     def dest_gau_edit(self):
         return _('financial:destination_update', args=[self.pk])

@@ -5,18 +5,31 @@
 
 {% block dashboard %}
 <main id="main" class="main">
-  <h1>Product Category</h1>
-  <div class="cols-6">
-    <form class="form-horizontal" action="." method="POST" enctype="multipart/form-data">
-      <div class="col-sm-6">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <a class="btn btn-danger" href="{% url 'financial:bank_list' %}">Cancel</a>
-        </div>
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Product Category</h5>
+        <form class="form-horizontal" action="" method="POST" enctype="">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-6 col-lg-6">
+              <label for="id_name" class="col-form-label">Name</label>
+              {{ form.name }}
+            </div>
+            <div class="col-6 col-lg-6">
+              <label for="id_details" class="col-form-label">Details</label>
+              {{ form.details }}
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
+              <a class="btn btn-danger btn-sm" href="{% url 'product:prodcat_list' %}">Cancel</a>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
 </main>
 {% endblock %}

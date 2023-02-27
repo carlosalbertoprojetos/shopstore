@@ -1,18 +1,22 @@
-<!-- person_delete.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-<h1>Delete</h1>
-<div class="cols-6">
-  <form action="." method="POST">
-    <div class="col-sm-6">
-      {% csrf_token %}
-      <p>Delete {{ object }} ?</p>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Confirm</button>
-        <a class="btn btn-danger" href="{% url 'financial:destination_list' %}">Cancel</a>
+{% block title %}Delete{% endblock %}
+
+{% block dashboard %}
+<main id="main" class="main">
+  <h5>Delete</h5>
+  <div class="cols-6">
+    <form action="." method="POST">
+      <div class="col-sm-6">
+        {% csrf_token %}
+        <p>Are you sure you want to delete the record: <b>{{ object.name }}</b>?</p>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+          <a class="btn btn-danger btn-sm" href="{% url 'financial:destination_list' %}">Cancel</a>
+        </div>
       </div>
-    </div>
-  </form>
-</div>
-{% endblock content %}
+    </form>
+  </div>
+</main>
+{% endblock %}

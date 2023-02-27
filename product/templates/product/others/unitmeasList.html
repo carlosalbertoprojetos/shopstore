@@ -5,34 +5,57 @@
 
 {% block dashboard %}
 <main id="main" class="main">
-  <h1>
-    Measurement Units
-    <a class="btn btn-primary" href="{% url 'product:unitmeas_create' %}">Add</a>
-  </h1>
-  <table class="table">
+  <div class="row align-items-center pb-2">
+    <div class="col-6">
+      <h5 class="">Unit of measurement</h5>
+    </div>
+    <div class="col-6">
+      <a class="d-flex float-end" href="{% url 'product:unitmeas_create' %}">
+        <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
+      </a>
+    </div>
+  </div>
+
+  <table class="table table-sm" id="id_table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Abbreviation</th>
-        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Abbreviation</th>
+        <th align='center' scope="col">Edit/Del</th>
       </tr>
     </thead>
     <tbody>
       {% for object in object_list %}
       <tr>
-        <td>{{ object.name }}</a></td>
-        <td>{{ object.abbreviation}}</td>
-        <a href="{{ object.catunit_gau_edit }}">
-          <i class="fa fa-edit"></i>
-        </a>
-        <a href="{{ object.catunit_gau_delete }}" style="padding-left: 7px">
-          <i class="fa fa-close no"></i>
-        </a>
+        <td>{{ object.name }}</td>
+        <td>{{ object.abbreviation }}</td>
+        <td>
+          <a class="px-2" href="">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="px-2" href="" style="padding-left: 7px">
+            <i class="fa fa-close no"></i>
+          </a>
         </td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </main>
-{% comment %} {% include "includes/pagination.html" %} {% endcomment %}
-{% endblock %}
+
+{% endblock dashboard %}
+
+{% block script %}
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<!-- DataTable JS -->
+<script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#id_table').DataTable();
+  });
+</script>
+{% endblock script %}

@@ -12,51 +12,65 @@
         <form class="form-horizontal" action="" method="POST" enctype="">
           {% csrf_token %}
           <div class="row">
-            <div class="col-12 col-lg-6">
-              <label for="id_release" class="col-form-label">Release</label>
-              {{ form.release }}
-            </div>
-            <div class="col-6 col-lg-4">
-              <label for="id_account" class="col-form-label">Account</label>
-              {{ form.account }}
-            </div>
-          </div>
-
-          <div class="row">
             <div class="col-6 col-lg-3">
               <label for="id_date" class="col-form-label">Date</label>
               {{ form.date }}
             </div>
-            <div class="col-6 col-lg-3">
-              <label for="id_destination" class="col-form-label">Destination</label>
-              {{ form.destination }}
+            <div class="col-3 col-lg-3">
+              <label for="id_release" class="col-form-label">Release</label>
+              <select class="form-select" name="release" id="id_release">
+                {% for item in form.release %}
+                <option>{{ item }}</option>
+                {% endfor %}
+              </select>
             </div>
-            <div class="col-12 col-lg-6">
+            <div class="col-3 col-lg-3">
+              <label for="id_account" class="col-form-label">Account</label>
+              <select class="form-select" name="account" id="id_account">
+                {% for item in form.account %}
+                <option>{{ item }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-3 col-lg-3">
+              <label for="id_destination" class="col-form-label">Destination</label>
+              <select class="form-select" name="account" id="id_destination">
+                {% for item in form.destination %}
+                <option>{{ item }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 col-lg-3">
+              <label for="id_value" class="col-form-label">Value</label>
+              {{ form.value }}
+            </div>
+            <div class="col-6 col-lg-3">
+              <label for="id_formpayment" class="col-form-label">Formpayment</label>
+              <select class="form-select" name="account" id="id_formpayment">
+                {% for item in form.formpayment %}
+                <option>{{ item }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-4 col-lg-6">
+              <label for="id_details" class="col-form-label">Details</label>
+              {{ form.details }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-12">
               <label for="id_description" class="col-form-label">Description</label>
               {{ form.description }}
             </div>
           </div>
-          <div class="row">
-            <div class="row">
-              <div class="col-12 col-lg-6">
-                <label for="id_value" class="col-form-label">Value</label>
-                {{ form.value }}
-              </div>
-              <div class="col-4 col-lg-6">
-                <label for="id_details" class="col-form-label">Details</label>
-                {{ form.details }}
-              </div>
-              <div class="col-4 col-lg-4">
-                <label for="id_formpayment" class="col-form-label">Formpayment</label>
-                {{ form.formpayment }}
-              </div>
+          <div class="row my-3">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
+              <a class="btn btn-danger btn-sm" href="{% url 'financial:payment_list' %}">Cancel</a>
             </div>
-            <div class="row my-3">
-              <div class="col-sm-12">
-                <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
-                <a class="btn btn-danger btn-sm" href="{% url 'financial:payment_list' %}">Cancel</a>
-              </div>
-            </div>
+          </div>
         </form>
       </div>
     </div>

@@ -12,46 +12,45 @@
         <form class="form-horizontal" action="" method="POST" enctype="">
           {% csrf_token %}
           <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-3 col-lg-3">
               <label for="id_order" class="col-form-label">Order</label>
-              {{ form.order }}
+              <select class="form-select" aria-label="Default select example" name="order" id="id_order">
+                {% for item in form.order %}
+                <option>{{ item }}</option>
+                {% endfor %}
+              </select>
             </div>
-            <div class="col-6 col-lg-4">
+            <div class="col-3 col-lg-3">
               <label for="id_date" class="col-form-label">Date</label>
               {{ form.date }}
             </div>
-          </div>
-          <div class="row">
-            <div class="col-6 col-lg-3">
-              <label for="id_description" class="col-form-label">Description</label>
-              {{ form.description }}
-            </div>
-            <div class="col-6 col-lg-3">
-              <label for="id_valueorder" class="col-form-label">Value</label>
-              {{ form.valueorder }}
-            </div>
-            <div class="col-12 col-lg-6">
+            <div class="col-2 col-lg-2">
               <label for="id_installments" class="col-form-label">Installments</label>
               {{ form.installments }}
             </div>
+            <div class="col-2 col-lg-2">
+              <label for="id_valueorder" class="col-form-label">Value</label>
+              {{ form.valueorder }}
+            </div>
+            <div class="col-2 col-lg-2">
+              <label for="id_totalorder" class="col-form-label">Total</label>
+              {{ form.totalorder }}
+            </div>
           </div>
-          <div class="row">
-            <div class="row">
-              <div class="col-4 col-lg-6">
-                <label for="id_number" class="col-form-label">Total</label>
-                {{ form.number }}
-              </div>
-              <div class="col-4 col-lg-6">
-                <label for="id_details" class="col-form-label">Details</label>
-                {{ form.details }}
-              </div>
+          <div class="col-12 col-lg-12">
+            <label for="id_description" class="col-form-label">Description</label>
+            {{ form.description }}
+          </div>
+          <div class="col-12 col-lg-12">
+            <label for="id_details" class="col-form-label">Details</label>
+            {{ form.details }}
+          </div>
+          <div class="row my-3">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
+              <a class="btn btn-danger btn-sm" href="{% url 'financial:release_list' %}">Cancel</a>
             </div>
-            <div class="row my-3">
-              <div class="col-sm-12">
-                <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
-                <a class="btn btn-danger btn-sm" href="{% url 'financial:release_list' %}">Cancel</a>
-              </div>
-            </div>
+          </div>
         </form>
       </div>
     </div>
