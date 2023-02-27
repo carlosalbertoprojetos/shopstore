@@ -1,49 +1,73 @@
-<!-- person_list.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-<h1>
-  Releases
-  <a class="btn btn-primary" href="{% url 'financial:release_create' %}">Add</a>
-</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Order</th>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Value Order</th>
-      <th>Installments</th>
-      <th>Total Order</th>
-      <th>Details</th>
-      <th>Updated</th>
-      <th>Created in</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for object in object_list %}
-    <tr>
-      <td>{{ object.order }}</td>
-      <td>{{ object.date}}</td>
-      <td>{{ object.description}}</td>
-      <td>{{ object.valueorder}}</td>
-      <td>{{ object.installments}}</td>
-      <td>{{ object.totalorder}}</td>
-      <td>{{ object.details}}</td>
-      <td>{{ object.updated}}</td>
-      <td>{{ object.createdin}}</td>
-      <td>
-        <a href="{{ object.release_gau_edit }} ">
-          <i class="fa fa-edit"></i>
-        </a>
-        <a href="{{ object.release_gau_delete }}" style="padding-left: 7px">
-          <i class="fa fa-close no"></i>
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% comment %} {% include "includes/pagination.html" %} {% endcomment %}
-{% endblock content %}
+{% block title %}Release{% endblock %}
+
+{% block dashboard %}
+<main id="main" class="main">
+  <div class="row align-items-center pb-2">
+    <div class="col-6">
+      <h5 class="">Release</h5>
+    </div>
+    <div class="col-6">
+      <a class="d-flex float-end" href="{% url 'financial:release_create' %}">
+        <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
+      </a>
+    </div>
+  </div>
+
+  <table class="table table-sm" id="id_table">
+    <thead>
+      <tr>
+        <th scope="col">Order</th>
+        <th scope="col">Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Valueorder</th>
+        <th scope="col">Installments</th>
+        <th scope="col">Totalorder</th>
+        <th scope="col">Details</th>
+        <th align='center' scope="col">Edit/Del</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <tr>
+        <td scope="row">{{ object.order }}</td>
+        <td> {{ object.date }}</td>
+        <td>{{ object.description }}</td>
+        <td>{{ object.valueorder }}</td>
+        <td>{{ object.installments }}</td>
+        <td>{{ object.totalorder }}</td>
+        <td>{{ object.details }}</td>
+        <td>
+          <a class="px-2" href="{{ object.release_gau_edit }}">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="px-2" href="{{ object.release_gau_delete }}" style="padding-left: 7px">
+            <i class="fa fa-close no"></i>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+
+{% endblock dashboard %}
+
+{% block script %}
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<!-- DataTable JS -->
+<script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#id_table').DataTable();
+  });
+
+
+</script>
+{% endblock script %}

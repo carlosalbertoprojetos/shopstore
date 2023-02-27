@@ -21,10 +21,11 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Cell</th>
+        <th scope="col">Cel</th>
         <th scope="col">Email</th>
         <th scope="col">Document</th>
-        <th scope="col">Edit/Del</th>
+        <th align='center' scope="col">Active</th>
+        <th align='center' scope="col">Edit/Del</th>
       </tr>
     </thead>
     <tbody>
@@ -37,6 +38,11 @@
         <td>{{ object.cell_main }}</td>
         <td>{{ object.email }}</td>
         <td>{{ object.document }}</td>
+        {% if object.active %}
+        <td><i class="fa fa-check"></i></td>
+        {% else %}
+        <td><i class="fa fa-close"></i></td>
+        {% endif %}
         <td>
           <a class="px-2" href="{{ object.register_gau_edit }}">
             <i class="fa fa-edit"></i>

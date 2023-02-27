@@ -1,50 +1,76 @@
-<!-- person_list.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-<h1>
-  Accounts
-  <a class="btn btn-primary" href="{% url 'financial:account_create' %}">Add</a>
-</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Bank</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Detail</th>
-      <th>Balance</th>
-      <th>Is Active</th>
-      <th>Create in</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for object in object_list %}
-    <tr>
-      <td>{{ object.bank}}</td>
-      <td>
-        <a href="{{ object.account_gau_detail }}">{{ object.name }}</a>
-      </td>
-      <td>{{ object.description}}</td>
-      <td>{{ object.balance}}</td>
-      {% if object.active %}
-      <td align='center'><i class="fa fa-check"></i></td>
-      {% else %}
-      <td align='center'><i class="fa fa-close"></i></td>
-      {% endif %}
-      <td>{{ object.createdin}}</td>
-      <td>
-        <a href="{{ object.account_gau_edit }} ">
-          <i class="fa fa-edit"></i>
-        </a>
-        <a href="{{ object.account_gau_delete }}" style="padding-left: 7px">
-          <i class="fa fa-close no"></i>
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% comment %} {% include "includes/pagination.html" %} {% endcomment %}
-{% endblock content %}
+{% block title %}Accounts{% endblock %}
+
+{% block dashboard %}
+<main id="main" class="main">
+  <div class="row align-items-center pb-2">
+    <div class="col-6">
+      <h5 class="">Account</h5>
+    </div>
+    <div class="col-6">
+      <a class="d-flex float-end" href="{% url 'financial:account_create' %}">
+        <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
+      </a>
+    </div>
+  </div>
+
+  <table class="table table-sm" id="id_table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Number</th>
+        <th scope="col">Agency</th>
+        <th scope="col">Details</th>
+        <th align='center' scope="col">Active</th>
+        <th align='center' scope="col">Edit/Del</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <tr>
+        <td scope="row">
+          <a href="{{ object.account_gau_detail }}">{{ object.name }}</a>
+        </td>
+        <td align='center'>{{ object.number }}</td>
+        <td align='center'>{{ object.agency }}</td>
+        <td>{{ object.details }}</td>
+        {% if object.active %}
+        <td align='center' class="pe-5"><i class="fa fa-check"></i></td>
+        {% else %}
+        <td align='center' class="pe-5"><i class="fa fa-close"></i></td>
+        {% endif %}
+        <td>
+          <a class="px-2" href="{{ object.account_gau_edit }}">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="px-2" href="{{ object.account_gau_delete }}" style="padding-left: 7px">
+            <i class="fa fa-close no"></i>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+
+{% endblock %}
+
+
+{% block script %}
+
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<!-- DataTable JS -->
+<script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#id_table').DataTable();
+  });
+</script>
+
+{% endblock script %}

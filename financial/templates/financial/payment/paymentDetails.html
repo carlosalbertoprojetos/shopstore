@@ -1,15 +1,64 @@
-<!-- person_detail.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-  <h1>Details</h1>
+{% block title %}Details{% endblock %}
 
-  <ul>
-    <li><b>Name:</b> {{ object.name }}</li>
-    <li><b>E-mail:</b> {{ object.number}}</li>
-    <li><b>Agency:</b> {{ object.agency }}</li>
-    <li><b>Detail:</b> {{ object.detail }}</li>
-    <li><b>Created in:</b> {{ object.createdin }}</li>
-    <li><b>Active:</b> {{ object.active }}</li>
-  </ul>
-{% endblock content %}
+{% block dashboard %}
+<main id="main" class="main">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Payment Details</h5>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="true">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+            role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="adress-tab" data-bs-toggle="tab" data-bs-target="#adress" type="button"
+            role="tab" aria-controls="adress" aria-selected="false" tabindex="-1">Adress</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button"
+            role="tab" aria-controls="orders" aria-selected="false" tabindex="-1">Orders</button>
+        </li>
+      </ul>
+      <div class="tab-content pt-4" id="myTabContent">
+        <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="card mb-1 p-3">
+            <p><b>Release: </b> {{ object.release }}</p>
+            <p><b>Account: </b> {{ object.account }}</p>
+            <p><b>Date: </b> {{ object.date }}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <div class="card mb-1 p-3">
+            <p><b>Destination: </b> {{ object.destination }}</p>
+            <p><b>Description: </b> {{ object.description }}</p>
+            <p><b>Details: </b> {{ object.details }}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="adress" role="tabpanel" aria-labelledby="adress-tab">
+          <div class="card mb-1 p-3">
+            <p><b>value: </b> {{ object.value }}</p>
+            <p><b>Formpayment: </b> {{ object.formpayment }}</p>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+          <div class="card mb-1 p-3">
+            <p class="">
+              Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam
+              perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum
+              iure.
+              Dignissimos fuga tempore dolor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

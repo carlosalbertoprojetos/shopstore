@@ -40,13 +40,11 @@ urlpatterns = [
     path('destination/<int:pk>/update/', v.destination_update, name='destination_update'),
     path('destination/<int:pk>/delete/', v.destination_delete, name='destination_delete'),
 
-
     # FormPayment ---------------------------------------------------------------
     path('formpayment/', v.formpayment_list, name='formpayment_list'),
     path('formpayment/create/', v.formpayment_create, name='formpayment_create'),
     path('formpayment/<int:pk>/update/', v.formpayment_update, name='formpayment_update'),
     path('formpayment/<int:pk>/delete/', v.formpayment_delete, name='formpayment_delete'),
-
 
     # Payment -------------------------------------------------------------------
     path('payment/', v.payment_list, name='payment_list'),
@@ -55,6 +53,3 @@ urlpatterns = [
     path('payment/<int:pk>/update/', v.Payment_update, name='Payment_update'),
     path('payment/<int:pk>/delete/', v.payment_delete, name='payment_delete'),
 ]
-
-
-

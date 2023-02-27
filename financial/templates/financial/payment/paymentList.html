@@ -1,53 +1,76 @@
-<!-- person_list.html -->
-{% extends "base.html" %}
+{% extends 'dashboard.html' %}
+{% load static %}
 
-{% block content %}
-<h1>
-  Payments
-  <a class="btn btn-primary" href="{% url 'financial:payment_create' %}">Add</a>
-</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Release</th>
-      <th>Account</th>
-      <th>Date</th>
-      <th>Destination</th>
-      <th>Description</th>
-      <th>Value</th>
-      <th>Details</th>
-      <th>Forpayment</th>
-      <th>Updated</th>
-      <th>Created in</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for object in object_list %}
-    <tr>
-      <td>
-        <a href="{{ object.payment_gau_detail }}">{{ object.release }}</a>
-      </td>
-      <td>{{ object.account}}</td>
-      <td>{{ object.date}}</td>
-      <td>{{ object.destination}}</td>
-      <td>{{ object.description}}</td>
-      <td>{{ object.value}}</td>
-      <td>{{ object.details}}</td>
-      <td>{{ object.formpayment}}</td>
-      <td>{{ object.updated}}</td>
-      <td>{{ object.createdin}}</td>
-      <td>
-        <a href="{{ object.payment_gau_edit }}">
+{% block title %}Registers{% endblock %}
+
+{% block dashboard %}
+<main id="main" class="main">
+  <div class="row align-items-center pb-2">
+    <div class="col-6">
+      <h5 class="">Register</h5>
+    </div>
+    <div class="col-6">
+      <a class="d-flex float-end" href="{% url 'financial:payment_create' %}">
+        <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
+      </a>
+    </div>
+  </div>
+
+  <table class="table table-sm" id="id_table">
+    <thead>
+      <tr>
+        <th scope="col">Release</th>
+        <th scope="col">Account</th>
+        <th scope="col">Date</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Description</th>
+        <th scope="col">Value</th>
+        <th scope="col">Details</th>
+        <th scope="col">Formpayment</th>
+        <th align='center' scope="col">Edit/Del</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+      <tr>
+        <td>
+          <a href="{{ object.payment_gau_detail }}">{{ object.release }}</a>
+        </td>
+        <td scope="row">{{ object.account }}</td>
+        <td>{{ object.date }}</td>
+        <td>{{ object.destination }}</td>
+        <td>{{ object.description }}</td>
+        <td>{{ object.value }}</td>
+        <td>{{ object.details }}</td>
+        <td>{{ object.formpayment }}</td>
+        <a class="px-2" href="{{ object.payment_gau_edit }}">
           <i class="fa fa-edit"></i>
         </a>
-        <a href="{{ object.payment_gau_delete }}" style="padding-left: 7px">
+        <a class="px-2" href="{{ object.payment_gau_delete }}" style="padding-left: 7px">
           <i class="fa fa-close no"></i>
         </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% comment %} {% include "includes/pagination.html" %} {% endcomment %}
-{% endblock content %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</main>
+
+{% endblock dashboard %}
+
+{% block script %}
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<!-- DataTable JS -->
+<script src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#id_table').DataTable();
+  });
+
+
+</script>
+{% endblock script %}

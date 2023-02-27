@@ -108,11 +108,9 @@ class Release(models.Model):
 class FormPayment(models.Model):
     name = models.CharField(max_length=50)
 
-
     class Meta:
         verbose_name = 'Form Payment'
         verbose_name_plural = 'Forms Payments'
-
 
     def __str__(self):
         return self.name
