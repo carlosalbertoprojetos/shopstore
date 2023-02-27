@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-import django_heroku
+# import django_heroku
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -227,4 +227,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Heroku
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
