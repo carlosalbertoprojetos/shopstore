@@ -24,14 +24,14 @@
         <th scope="col">Number</th>
         <th scope="col">Agency</th>
         <th scope="col">Details</th>
-        <th align='center' scope="col">Active</th>
-        <th align='center' scope="col">Edit/Del</th>
+        <th scope="col">Active</th>
+        <th scope="col">Edit/Del</th>
       </tr>
     </thead>
     <tbody>
       {% for object in object_list %}
       <tr>
-        <td scope="row">
+        <td>
           <a href="{{ object.bank_gau_detail }}">{{ object.name }}</a>
         </td>
         <td>{{ object.number }}</td>

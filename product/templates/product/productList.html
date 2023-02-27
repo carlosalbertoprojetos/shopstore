@@ -27,20 +27,20 @@
         <th scope="col">Value Sell</th>
         <th scope="col">Stock</th>
         <th scope="col">Available</th>
-        <th align='center' scope="col">Active</th>
-        <th align='center' scope="col">Edit/Del</th>
+        <th scope="col">Active</th>
+        <th scope="col">Edit/Del</th>
       </tr>
     </thead>
     <tbody>
       {% for object in object_list %}
       <tr>
-        <td scope="row">
+        <td>
           <a href="{{ object.product_gau_detail }}">{{ object.name }}</a>
         </td>
         <td>{{ object.category }}</td>
         <td>{{ object.description }}</td>
-        <td align='center'>{{ object.valueBuy }}</td>
-        <td align='center'>{{ object.valueSell }}</td>
+        <td>>{{ object.valueBuy }}</td>
+        <td>>{{ object.valueSell }}</td>
         <td>{{ object.stock }}</td>
         <td>{{ object.available }}</td>
         {% if object.active %}

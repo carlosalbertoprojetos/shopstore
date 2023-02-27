@@ -27,13 +27,13 @@
         <th scope="col">Installments</th>
         <th scope="col">Totalorder</th>
         <th scope="col">Details</th>
-        <th align='center' scope="col">Edit/Del</th>
+        <th scope="col">Edit/Del</th>
       </tr>
     </thead>
     <tbody>
       {% for object in object_list %}
       <tr>
-        <td scope="row">{{ object.order }}</td>
+        <td>{{ object.order }}</td>
         <td> {{ object.date }}</td>
         <td>{{ object.description }}</td>
         <td>{{ object.valueorder }}</td>

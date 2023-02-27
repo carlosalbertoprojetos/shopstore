@@ -24,32 +24,32 @@
         <th scope="col">Number</th>
         <th scope="col">Agency</th>
         <th scope="col">Details</th>
-        <th align='center' scope="col">Active</th>
-        <th align='center' scope="col">Edit/Del</th>
+        <th scope="col">Active</th>
+        <th scope="col">Edit/Del</th>
       </tr>
     </thead>
     <tbody>
       {% for object in object_list %}
       <tr>
-        <td scope="row">
+        <td>
           <a href="{{ object.account_gau_detail }}">{{ object.name }}</a>
         </td>
-        <td align='center'>{{ object.number }}</td>
-        <td align='center'>{{ object.agency }}</td>
+        <td>{{ object.number }}</td>
+        <td>{{ object.agency }}</td>
         <td>{{ object.details }}</td>
         {% if object.active %}
-        <td align='center' class="pe-5"><i class="fa fa-check"></i></td>
-        {% else %}
-        <td align='center' class="pe-5"><i class="fa fa-close"></i></td>
-        {% endif %}
-        <td>
-          <a class="px-2" href="{{ object.account_gau_edit }}">
-            <i class="fa fa-edit"></i>
-          </a>
-          <a class="px-2" href="{{ object.account_gau_delete }}" style="padding-left: 7px">
-            <i class="fa fa-close no"></i>
-          </a>
-        </td>
+        <tdclass="pe-5"><i class="fa fa-check"></i></td>
+          {% else %}
+          <tdclass="pe-5"><i class="fa fa-close"></i></td>
+            {% endif %}
+            <td>
+              <a class="px-2" href="{{ object.account_gau_edit }}">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a class="px-2" href="{{ object.account_gau_delete }}" style="padding-left: 7px">
+                <i class="fa fa-close no"></i>
+              </a>
+            </td>
       </tr>
       {% endfor %}
     </tbody>
