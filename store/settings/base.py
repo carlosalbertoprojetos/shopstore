@@ -225,6 +225,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Heroku
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # django_heroku.settings(locals())
