@@ -7,15 +7,9 @@
 <main id="main" class="main">
   <div class="row align-items-center pb-2">
     <div class="col-6">
-      <h5 class="">Accounts</h5>
-    </div>
-    <div class="col-6">
-      <a class="d-flex float-end" href="{% url 'financial:account_create' %}">
-        <img src="{% static 'img/plus.png' %}" alt="" width="40" height="40">
-      </a>
+      <h5>Accounts to Bank:<a class="ps-2" href="/financial/banks/">{{ bank_name }}</a></h5>
     </div>
   </div>
-
   <table class="table table-sm" id="id_table">
     <caption>Accounts</caption>
     <thead>
@@ -32,28 +26,28 @@
       {% for object in object_list %}
       <tr>
         <td>
-          <a href="{{ object.account_gau_detail }}">{{ object.name }}</a>
+          <a href="{{ object.pk }}/details">{{ object.name }}</a>
         </td>
         <td>{{ object.number }}</td>
         <td>{{ object.agency }}</td>
         <td>{{ object.details }}</td>
         {% if object.active %}
-        <tdclass="pe-5"><i class="fa fa-check"></i></td>
-          {% else %}
-          <tdclass="pe-5"><i class="fa fa-close"></i></td>
-            {% endif %}
-            <td>
-              <a class="px-2" href="{{ object.account_gau_edit }}">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a class="px-2" href="{{ object.account_gau_delete }}" style="padding-left: 7px">
-                <i class="fa fa-close no"></i>
-              </a>
-            </td>
+        <td class="pe-5"><i class="fa fa-check"></i></td>
+        {% else %}
+        <td class="pe-5"><i class="fa fa-close"></i></td>
+        {% endif %}
+        <td>
+          <a class="px-2" href="{{ object.pk }}/update">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a class="px-2" href="{{ object.pk }}/delete" style="padding-left: 7px">
+            <i class="fa fa-close no"></i>
+          </a>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
+
   </table>
 </main>
-
 {% endblock %}

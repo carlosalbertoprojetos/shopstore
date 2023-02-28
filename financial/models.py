@@ -50,14 +50,14 @@ class Account(models.Model):
     def __str__(self):
         return self.name
 
-    def account_gau_detail(self):
-        return _('financial:account_details', args=[self.pk])
+    # def account_gau_detail(self):
+    #     return _('financial:account_details', args=[{'bank_id': self.bank_id},{'pk':self.pk}])
 
-    def account_gau_edit(self):
-        return _('financial:account_update', args=[self.pk])
+    # def account_gau_edit(self):
+    #     return _('financial:account_update', args=[self.pk])
 
-    def account_gau_delete(self):
-        return _('financial:account_delete', args=[self.pk])
+    # def account_gau_delete(self):
+    #     return _('financial:account_delete', args=[{'bank_id': self.bank_id},{'pk':self.pk}])
 
 
 class DestinationCategory(models.Model):

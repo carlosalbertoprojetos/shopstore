@@ -25,6 +25,7 @@
         <th scope="col">Agency</th>
         <th scope="col">Details</th>
         <th scope="col">Active</th>
+        <th scope="col">Account</th>
         <th scope="col">Edit/Del</th>
       </tr>
     </thead>
@@ -42,6 +43,11 @@
         {% else %}
         <td><i class="fa fa-close"></i></td>
         {% endif %}
+        <td>
+          <a class="px-2" href="{% url 'financial:account_list' bank_id=object.id %}" style="padding-left: 7px"><i
+              class="fa fa-list-alt" aria-hidden="true"></i></a>
+          <a class="px-2" href="{% url 'financial:account_create' bank_id=object.id %}"><i class="fa fa-plus"></i></a>
+        </td>
         <td>
           <a class="px-2" href="{{ object.bank_gau_edit }}">
             <i class="fa fa-edit"></i>

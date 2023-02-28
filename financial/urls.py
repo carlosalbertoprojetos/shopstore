@@ -15,11 +15,11 @@ urlpatterns = [
     path('bank/<int:pk>/delete/', v.bank_delete, name='bank_delete'),
 
     # Account ------------------------------------------------------------------
-    path('account/', v.account_list, name='account_list'),
-    path('account/create/', v.account_create, name='account_create'),
-    path('account/<int:pk>/details/', v.account_details, name='account_details'),
-    path('account/<int:pk>/update/', v.account_update, name='account_update'),
-    path('account/<int:pk>/delete/', v.account_delete, name='account_delete'),
+    path('<bank_id>/account/', v.account_list, name='account_list'),
+    path('<bank_id>/account/create/', v.account_create, name='account_create'),
+    path('<bank_id>/account/<int:pk>/details/', v.account_details, name='account_details'),
+    path('<bank_id>/account/<int:pk>/update/', v.account_update, name='account_update'),
+    path('<bank_id>/account/<int:pk>/delete/', v.account_delete, name='account_delete'),
 
     # Release ------------------------------------------------------------------
     path('release/', v.release_list, name='release_list'),

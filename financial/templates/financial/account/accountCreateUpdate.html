@@ -7,15 +7,22 @@
 <main id="main" class="main">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body pt-3">
+        <div class="form-control form-control-lg">
+          {% for bank in bank %}
+          <h5 class="card-title m-0 p-0">
+            {{ bank_name }}
+            <p class="m-0">
+              Agency: {{ bank.agency }} -
+              Number: {{ bank.number }}
+            </p>
+          </h5>
+          {% endfor %}
+        </div>
         <h5 class="card-title">Account</h5>
-        <form class="form-horizontal" action="" method="POST" enctype="">
+        <form class="form-horizontal" method="POST">
           {% csrf_token %}
           <div class="row">
-            <div class="col-12 col-lg-6">
-              <label for="id_bank" class="col-form-label">Bank</label>
-              {{ form.bank }}
-            </div>
             <div class="col-12 col-lg-6">
               <label for="id_name" class="col-form-label">Name</label>
               {{ form.name }}
@@ -24,35 +31,29 @@
               <label for="id_description" class="col-form-label">Description</label>
               {{ form.description }}
             </div>
-            <div class="col-12">
+            <div class="col-6 col-lg-3">
               <label for="id_details" class="col-form-label">Details</label>
               {{ form.details }}
             </div>
-            <div class="col-6 col-lg-3">
-              <label for="id_balance" class="col-form-label">Balance </label>
+            <div class="col-4 col-lg-6">
+              <label for="id_balance" class="col-form-label">Balance</label>
               {{ form.balance }}
             </div>
-            <div class="col-6 col-lg-3">
-              <label for="id_agency" class="col-form-label">Agency</label>
-              {{ form.agency }}
-            </div>
           </div>
-          <div class="col-12 col-lg-2">
-            <legend class="col-form-label">Active</legend>
+          <div class="col-6 col-lg-2">
+            <legend for="id_active" class="col-form-label">Active</legend>
             <div class="form-check ms-1">
               <input class="form-check-input ps-0" type="checkbox" checked="" name="active" id="id_active">
             </div>
           </div>
-          <div class="row my-3">
-            <div class="col-sm-12">
-              <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
-              <a class="btn btn-danger btn-sm" href="{% url 'financial:account_list' %}">Cancel</a>
-            </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary btn-sm" value="Update">Submit</button>
+            <a class="btn btn-danger btn-sm" href="/financial/banks/">Cancel</a>
           </div>
-        </form>
       </div>
+      </form>
     </div>
   </div>
+  </div>
 </main>
-
 {% endblock %}
