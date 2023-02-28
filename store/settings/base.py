@@ -148,6 +148,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # redirecionar ao clicar no link de confirmação de email
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/login/'
 
+ACCOUNT_LOGOUT_ON_GET = True
 
 # apis contas sociais
 SOCIALACCOUNT_PROVIDERS = {
